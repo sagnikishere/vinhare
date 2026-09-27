@@ -27,12 +27,12 @@ export const PROPERTIES: PropertyItem[] = [
     description:
       'Shiv Garden Resort offers an atmospheric blend of opulent garden lawns, courtyard architecture, and high-end event spaces. Crafted for serene stays and unforgettable gatherings.',
     tagline: 'Where natural elegance meets timeless hospitality.',
-    image: '/images/shiv_garden_resort.jpg',
+    image: '/images/shiv_garden_day.jpeg',
     gallery: [
+      '/images/shiv_garden_day.jpeg',
+      '/images/shiv_garden_night.jpeg',
       '/images/shiv_garden_resort.jpg',
-      '/images/hero_resort.jpg',
       'https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&auto=format&fit=crop',
     ],
     features: [
       'Expansive Manicured Event Lawns',
@@ -107,12 +107,12 @@ export const PROPERTIES: PropertyItem[] = [
     description:
       'Resort Raj embodies royal Indian grace and classical architecture. Featuring soaring arched entrances, majestic pillars, and sprawling banquet spaces for grand occasions.',
     tagline: 'Experience royal granduer and gracious hospitality.',
-    image: '/images/hero_resort.jpg',
+    image: '/images/raj_resort.webp',
     gallery: [
+      '/images/raj_resort.webp',
       '/images/hero_resort.jpg',
       'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1564501049412-61c2a3083791?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1200&auto=format&fit=crop',
     ],
     features: [
       'Heritage Royal Façade & Pillars',
@@ -195,7 +195,7 @@ export const EXPERIENCES = [
     subtitle: 'Bring everyone together.',
     description:
       'From weddings to corporate galas, our expansive manicured lawns and grand pavilions elevate life’s landmark milestones.',
-    image: '/images/shiv_garden_resort.jpg',
+    image: '/images/shiv_garden_night.jpeg',
   },
   {
     id: 'dine',
@@ -211,7 +211,7 @@ export const EXPERIENCES = [
     subtitle: 'Slow down.',
     description:
       'Unwind by serene reflecting waters, walk along fragrant tropical gardens, and rediscover peace surrounded by nature.',
-    image: '/images/hero_resort.jpg',
+    image: '/images/raj_resort.webp',
   },
   {
     id: 'create-memories',
@@ -226,10 +226,10 @@ export const EXPERIENCES = [
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'g1',
-    title: 'Golden Twilight Lawn',
+    title: 'Shiv Garden Resort - Daytime',
     category: 'RESORTS',
     property: 'Shiv Garden Resort',
-    image: '/images/shiv_garden_resort.jpg',
+    image: '/images/shiv_garden_day.jpeg',
     aspect: 'wide',
   },
   {
@@ -242,10 +242,10 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'g3',
-    title: 'Grand Palace Façade',
+    title: 'Resort Raj Palatial View',
     category: 'RESORTS',
     property: 'Resort Raj',
-    image: '/images/hero_resort.jpg',
+    image: '/images/raj_resort.webp',
     aspect: 'wide',
   },
   {
@@ -258,10 +258,10 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'g5',
-    title: 'Evening Celebration Lighting',
+    title: 'Shiv Garden Night Illumination',
     category: 'EVENTS',
     property: 'Shiv Garden Resort',
-    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/shiv_garden_night.jpeg',
     aspect: 'tall',
   },
   {
@@ -282,10 +282,10 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'g8',
-    title: 'Garden Pathway Walk',
+    title: 'Heritage Palace Grounds',
     category: 'EXPERIENCES',
     property: 'Resort Raj',
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/hero_resort.jpg',
     aspect: 'tall',
   },
 ];
@@ -361,7 +361,7 @@ export const NETWORK_LOCATIONS: NetworkLocation[] = [
     property: 'Shiv Garden Resort',
     x: 48,
     y: 42,
-    image: '/images/shiv_garden_resort.jpg',
+    image: '/images/shiv_garden_day.jpeg',
     type: 'Resort • Stay • Events',
     description: 'Premier garden lawn resort destination for grand events and serene retreats.',
   },
@@ -383,7 +383,7 @@ export const NETWORK_LOCATIONS: NetworkLocation[] = [
     property: 'Resort Raj',
     x: 42,
     y: 58,
-    image: '/images/hero_resort.jpg',
+    image: '/images/raj_resort.webp',
     type: 'Resort • Events • Hospitality',
     description: 'Royal palace façade resort crafted for palatial celebrations and luxury hosting.',
   },
