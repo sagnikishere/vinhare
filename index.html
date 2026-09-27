@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VinHere Hotel & Resort | Luxury Stay, Royal Weddings & Events</title>
+  <meta name="description" content="Welcome to VinHere Hotel & Resort, a luxury hotel, resort, and premier wedding & event destination. Experience royal Indian hospitality, plush suites, grand banquets, and fine dining.">
+  <meta name="keywords" content="VinHere Hotel, Luxury Resort, Wedding Venue, Banquet Hall, Royal Suite, Event Destination, Indian Hospitality">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Line Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP ANNOUNCEMENT BAR
+       ========================================================================== -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-info">
+        <div class="top-bar-item">
+          <i data-lucide="phone"></i>
+          <span>Reservations: <a href="tel:+919876543210">+91 98765 43210</a> / <a href="tel:+919123456789">+91 91234 56789</a></span>
+        </div>
+        <div class="top-bar-item">
+          <i data-lucide="map-pin"></i>
+          <span>Royal Heritage Expressway, Mithila Circle, Bihar 846004</span>
+        </div>
+      </div>
+      <div class="top-bar-info">
+        <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-badge">
+          <i data-lucide="message-circle"></i> WhatsApp Concierge
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN STICKY NAVIGATION BAR
+       ========================================================================== -->
+  <header class="navbar" id="mainNavbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo">
+        <div class="brand-emblem">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L15 8L21 9L16.5 13.5L18 19.5L12 16.5L6 19.5L7.5 13.5L3 9L9 8L12 2Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">VINHERE</span>
+          <span class="brand-subtitle">HOTEL & RESORT</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#rooms" class="nav-link">Rooms & Suites</a>
+        <a href="#dining" class="nav-link">Dining</a>
+        <a href="#weddings" class="nav-link">Weddings & Events</a>
+        <a href="#venues" class="nav-link">Venues</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#location" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-primary-gold" onclick="openBookingModal()">Book Now</button>
+        <div class="mobile-toggle" id="mobileToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-wrapper">
+      <img src="assets/resort_hero.jpg" alt="VinHere Resort Facade" class="hero-bg-img">
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-crown-badge">
+        <svg viewBox="0 0 24 24">
+          <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5Z" />
+        </svg>
+        <span class="hero-crown-text">ROYAL INDIAN HOSPITALITY</span>
+      </div>
+
+      <h1 class="hero-title">VINHERE<span>HOTEL & RESORT</span></h1>
+      <div class="hero-tagline">Where Luxury Meets Celebration</div>
+      
+      <p class="hero-quote">
+        "An elegant destination for unforgettable stays, weddings, celebrations and cherished moments."
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-primary-gold">Explore VinHere</a>
+        <button class="btn btn-primary-wine" onclick="openEventModal()">Plan Your Event</button>
+      </div>
+    </div>
+
+    <a href="#about" class="hero-scroll-down">
+      <div class="mouse-icon">
+        <div class="mouse-wheel"></div>
+      </div>
+      <span>Scroll Down</span>
+    </a>
+  </section>
+
+  <!-- ==========================================================================
+       QUICK BOOKING & ENQUIRY STRIP
+       ========================================================================== -->
+  <div class="container booking-strip-wrapper">
+    <div class="booking-strip">
+      <form class="booking-form-grid" id="quickBookingForm" onsubmit="handleQuickBooking(event)">
+        <div class="booking-field">
+          <label>Check-In Date</label>
+          <input type="date" class="booking-input" required id="quickCheckIn">
+        </div>
+        <div class="booking-field">
+          <label>Check-Out Date</label>
+          <input type="date" class="booking-input" required id="quickCheckOut">
+        </div>
+        <div class="booking-field">
+          <label>Booking Category</label>
+          <select class="booking-input" id="quickCategory">
+            <option value="room">Luxury Room / Suite</option>
+            <option value="wedding">Royal Wedding Venue</option>
+            <option value="banquet">Banquet & Party Hall</option>
+            <option value="dining">Dining Table Booking</option>
+          </select>
+        </div>
+        <div class="booking-field">
+          <label>Guests</label>
+          <select class="booking-input" id="quickGuests">
+            <option value="2">1 - 2 Guests</option>
+            <option value="4">3 - 5 Guests</option>
+            <option value="50">10 - 50 Guests (Intimate Event)</option>
+            <option value="200">100 - 500+ Guests (Grand Wedding)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary-gold" style="width: 100%; padding: 0.85rem;">Check Availability</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       WELCOME TO VINHERE (SPLIT SCREEN)
+       ========================================================================== -->
+  <section class="welcome-section section-padding" id="about">
+    <div class="container">
+      <div class="welcome-grid">
+        <!-- Left: Hotel Visual -->
+        <div class="welcome-image-wrapper">
+          <div class="welcome-image-frame"></div>
+          <img src="assets/resort_hero.jpg" alt="VinHere Heritage Resort Grounds" class="welcome-main-img">
+          <div class="welcome-badge-floating">
+            <span class="badge-stat-num">15+</span>
+            <span class="badge-stat-label">Acres Royal Estate & Gardens</span>
+          </div>
+        </div>
+
+        <!-- Right: Story & Hospitality Content -->
+        <div class="welcome-content">
+          <div class="subheading-badge">OUR DESTINATION</div>
+          <h2 class="section-title">Welcome to VinHere</h2>
+          
+          <div class="mithila-divider" style="justify-content: flex-start;">
+            <div class="mithila-line" style="width: 50px;"></div>
+            <svg class="mithila-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+            <div class="mithila-line" style="width: 100px;"></div>
+          </div>
+
+          <p class="welcome-highlight">
+            "More than a stay, VinHere is a destination created for comfort, celebrations and unforgettable experiences."
+          </p>
+
+          <p class="welcome-text">
+            Nestled amid serene landscaped gardens, VinHere Hotel & Resort seamlessly blends rich Indian royal aesthetic with state-of-the-art modern luxury hospitality. From opulent accommodations and multi-cuisine culinary masterpieces to breathtaking wedding lawns and crystal banquet halls, every corner of VinHere is crafted to elevate your special moments into timeless memories.
+          </p>
+
+          <div class="welcome-features-list">
+            <div class="welcome-feature-item">
+              <i data-lucide="check-circle-2"></i> Plush Rooms & Presidential Suites
+            </div>
+            <div class="welcome-feature-item">
+              <i data-lucide="check-circle-2"></i> 1,200+ Capacity Grand Wedding Lawns
+            </div>
+            <div class="welcome-feature-item">
+              <i data-lucide="check-circle-2"></i> Multi-Cuisine Fine Dining & Catering
+            </div>
+            <div class="welcome-feature-item">
+              <i data-lucide="check-circle-2"></i> 24/7 Royal Concierge & Valet Service
+            </div>
+          </div>
+
+          <a href="#rooms" class="btn btn-outline-wine">Discover VinHere &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       WHY VINHERE (ICON-BASED FEATURE GRID)
+       ========================================================================== -->
+  <section class="why-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="subheading-badge">UNMATCHED HOSPITALITY</span>
+        <h2 class="section-title">Why Choose VinHere</h2>
+        <div class="mithila-divider">
+          <div class="mithila-line"></div>
+          <svg class="mithila-icon" viewBox="0 0 24 24"><path d="M12 2L15 8L21 9L16.5 13.5L18 19.5L12 16.5L6 19.5L7.5 13.5L3 9L9 8L12 2Z"/></svg>
+          <div class="mithila-line"></div>
+        </div>
+        <p class="section-desc">
+          We pride ourselves on offering thoughtful details and personalized experiences tailored to make every stay and event extraordinary.
+        </p>
+      </div>
+
+      <div class="why-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="bed-double"></i>
+          </div>
+          <h3 class="feature-title">Luxury Stay</h3>
+          <p class="feature-desc">Comfortable rooms designed for a relaxing stay, equipped with premium linens, smart amenities, and soothing garden views.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="sparkles"></i>
+          </div>
+          <h3 class="feature-title">Grand Celebrations</h3>
+          <p class="feature-desc">Beautiful spaces for weddings, receptions and special occasions with majestic lighting, mandap setups, and sound systems.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="heart-handshake"></i>
+          </div>
+          <h3 class="feature-title">Exceptional Hospitality</h3>
+          <p class="feature-desc">Thoughtful service designed around every guest, rooted in traditional Indian warmth and attentive 24/7 butler care.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="map-pin"></i>
+          </div>
+          <h3 class="feature-title">Perfect Location</h3>
+          <p class="feature-desc">Conveniently accessible for local and traveling guests with smooth highway connectivity, ample parking, and valet service.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="utensils"></i>
+          </div>
+          <h3 class="feature-title">Fine Dining</h3>
+          <p class="feature-desc">Delicious food and memorable dining experiences prepared by seasoned chefs specializing in Indian, Mithila, and global cuisines.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="users"></i>
+          </div>
+          <h3 class="feature-title">Dedicated Events Team</h3>
+          <p class="feature-desc">Professional support for planning and executing your event smoothly, handling decor, catering, guest arrival, and logistics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ROOMS & SUITES SECTION
+       ========================================================================== -->
+  <section class="rooms-section section-padding" id="rooms">
+    <div class="container">
+      <div class="section-header">
+        <span class="subheading-badge">ROYAL ACCOMMODATIONS</span>
+        <h2 class="section-title">Stay in Comfort</h2>
+        <div class="mithila-divider">
+          <div class="mithila-line"></div>
+          <svg class="mithila-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+          <div class="mithila-line"></div>
+        </div>
+        <p class="section-desc">
+          Immerse yourself in understated elegance. Each room is meticulously furnished with plush decor, rich textures, and modern technology.
+        </p>
+      </div>
+
+      <div class="rooms-grid">
+        <!-- Room 1: Deluxe Room -->
+        <div class="room-card">
+          <div class="room-image-container">
+            <img src="assets/royal_suite.jpg" alt="Deluxe Room" class="room-img">
+            <span class="room-tag">POPULAR</span>
+          </div>
+          <div class="room-content">
+            <h3 class="room-title">Deluxe Room</h3>
+            <p class="room-desc">A peaceful sanctuary featuring a plush king-size bed, elegant wooden furnishings, and a modern marble ensuite bath.</p>
+            <div class="room-amenities">
+              <span class="amenity-chip">King Bed</span>
+              <span class="amenity-chip">Free High-Speed Wi-Fi</span>
+              <span class="amenity-chip">Smart LED TV</span>
+              <span class="amenity-chip">Garden View</span>
+            </div>
+            <div class="room-footer">
+              <div class="room-price">
+                <span class="price-label">Starting From</span>
+                <span class="price-amount">₹4,999 / Night</span>
+              </div>
+              <button class="btn btn-outline-wine" onclick="openRoomModal('Deluxe Room', '₹4,999')">View Room</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 2: Premium Room -->
+        <div class="room-card">
+          <div class="room-image-container">
+            <img src="assets/royal_suite.jpg" alt="Premium Room" class="room-img">
+            <span class="room-tag">BALCONY</span>
+          </div>
+          <div class="room-content">
+            <h3 class="room-title">Premium Room</h3>
+            <p class="room-desc">Enhanced space featuring a private balcony with sunset views, cozy seating lounge, and complimentary breakfast service.</p>
+            <div class="room-amenities">
+              <span class="amenity-chip">Private Balcony</span>
+              <span class="amenity-chip">Complimentary Breakfast</span>
+              <span class="amenity-chip">Mini Bar</span>
+              <span class="amenity-chip">Work Desk</span>
+            </div>
+            <div class="room-footer">
+              <div class="room-price">
+                <span class="price-label">Starting From</span>
+                <span class="price-amount">₹6,999 / Night</span>
+              </div>
+              <button class="btn btn-outline-wine" onclick="openRoomModal('Premium Room', '₹6,999')">View Room</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 3: Executive Room -->
+        <div class="room-card">
+          <div class="room-image-container">
+            <img src="assets/royal_suite.jpg" alt="Executive Room" class="room-img">
+            <span class="room-tag">EXECUTIVE</span>
+          </div>
+          <div class="room-content">
+            <h3 class="room-title">Executive Room</h3>
+            <p class="room-desc">Designed for discerning business & family guests, offering dedicated work setup, rain shower, and express laundry service.</p>
+            <div class="room-amenities">
+              <span class="amenity-chip">Executive Lounge Access</span>
+              <span class="amenity-chip">Rain Shower</span>
+              <span class="amenity-chip">24/7 Butler Support</span>
+              <span class="amenity-chip">Express Laundry</span>
+            </div>
+            <div class="room-footer">
+              <div class="room-price">
+                <span class="price-label">Starting From</span>
+                <span class="price-amount">₹9,999 / Night</span>
+              </div>
+              <button class="btn btn-outline-wine" onclick="openRoomModal('Executive Room', '₹9,999')">View Room</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 4: Royal Presidential Suite -->
+        <div class="room-card">
+          <div class="room-image-container">
+            <img src="assets/royal_suite.jpg" alt="Royal Presidential Suite" class="room-img">
+            <span class="room-tag">LUXURY SUITE</span>
+          </div>
+          <div class="room-content">
+            <h3 class="room-title">Royal Presidential Suite</h3>
+            <p class="room-desc">Our flagship suite boasting 1,200 sq.ft of pure luxury with separate living room, private Jacuzzi, and heritage Mithila carvings.</p>
+            <div class="room-amenities">
+              <span class="amenity-chip">Private Jacuzzi</span>
+              <span class="amenity-chip">Separate Living Room</span>
+              <span class="amenity-chip">Heritage Carvings</span>
+              <span class="amenity-chip">VIP Welcome Amenities</span>
+            </div>
+            <div class="room-footer">
+              <div class="room-price">
+                <span class="price-label">Starting From</span>
+                <span class="price-amount">₹18,999 / Night</span>
+              </div>
+              <button class="btn btn-outline-wine" onclick="openRoomModal('Royal Presidential Suite', '₹18,999')">View Room</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       WEDDINGS & EVENTS (VISUALLY IMPRESSIVE SECTION)
+       ========================================================================== -->
+  <section class="weddings-section section-padding" id="weddings">
+    <div class="weddings-bg-ornament"></div>
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="section-header">
+        <span class="subheading-badge" style="color: var(--color-gold);">DESTINATION WEDDINGS & CELEBRATIONS</span>
+        <h2 class="section-title light-text">Celebrate Life's Grandest Moments</h2>
+        <div class="mithila-divider">
+          <div class="mithila-line"></div>
+          <svg class="mithila-icon" viewBox="0 0 24 24"><path d="M12 2L15 8L21 9L16.5 13.5L18 19.5L12 16.5L6 19.5L7.5 13.5L3 9L9 8L12 2Z"/></svg>
+          <div class="mithila-line"></div>
+        </div>
+        <p class="section-desc light-text">
+          "From intimate ceremonies to grand celebrations, VinHere provides elegant spaces and thoughtful hospitality for moments that deserve to be remembered."
+        </p>
+      </div>
+
+      <div class="events-grid">
+        <!-- Event 1: Weddings -->
+        <div class="event-card">
+          <img src="assets/wedding_hall.jpg" alt="Royal Wedding" class="event-card-img">
+          <div class="event-card-overlay">
+            <div class="event-icon-badge">
+              <i data-lucide="crown"></i>
+            </div>
+            <h3 class="event-card-title">Weddings</h3>
+            <p class="event-card-desc">"Celebrate your special day in an unforgettable setting with royal floral mandap setups, red carpet arrivals, and custom banquets."</p>
+          </div>
+        </div>
+
+        <!-- Event 2: Receptions -->
+        <div class="event-card">
+          <img src="assets/wedding_hall.jpg" alt="Grand Receptions" class="event-card-img">
+          <div class="event-card-overlay">
+            <div class="event-icon-badge">
+              <i data-lucide="sparkles"></i>
+            </div>
+            <h3 class="event-card-title">Receptions</h3>
+            <p class="event-card-desc">"Elegant spaces designed for memorable evenings, complete with crystal chandelier lighting, DJ stage, and multi-cuisine buffets."</p>
+          </div>
+        </div>
+
+        <!-- Event 3: Engagements -->
+        <div class="event-card">
+          <img src="assets/wedding_hall.jpg" alt="Engagements & Sangeet" class="event-card-img">
+          <div class="event-card-overlay">
+            <div class="event-icon-badge">
+              <i data-lucide="heart"></i>
+            </div>
+            <h3 class="event-card-title">Engagements & Sangeet</h3>
+            <p class="event-card-desc">"Beautiful venues for the beginning of a new chapter, featuring thematic decor, cocktail bars, and dance floors."</p>
+          </div>
+        </div>
+
+        <!-- Event 4: Birthday & Family Celebrations -->
+        <div class="event-card">
+          <img src="assets/resort_hero.jpg" alt="Birthday & Family Celebrations" class="event-card-img">
+          <div class="event-card-overlay">
+            <div class="event-icon-badge">
+              <i data-lucide="party-popper"></i>
+            </div>
+            <h3 class="event-card-title">Birthday & Family Celebrations</h3>
+            <p class="event-card-desc">"Bring your loved ones together and celebrate anniversaries, milestone birthdays, and traditional family functions."</p>
+          </div>
+        </div>
+
+        <!-- Event 5: Corporate Events -->
+        <div class="event-card">
+          <img src="assets/resort_hero.jpg" alt="Corporate Events" class="event-card-img">
+          <div class="event-card-overlay">
+            <div class="event-icon-badge">
+              <i data-lucide="briefcase"></i>
+            </div>
+            <h3 class="event-card-title">Corporate Events</h3>
+            <p class="event-card-desc">"Professional spaces for meetings, conferences, galas, and corporate retreats with high-end AV audio-visual infrastructure."</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-cta-center">
+        <button class="btn btn-primary-gold" onclick="openEventModal()">Plan Your Celebration</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       BANQUET / EVENT VENUES SECTION (INTERACTIVE TABS & CALCULATOR)
+       ========================================================================== -->
+  <section class="venues-section section-padding" id="venues">
+    <div class="container">
+      <div class="section-header">
+        <span class="subheading-badge">BANQUET & EVENT SPACES</span>
+        <h2 class="section-title">Explore Our Venues</h2>
+        <div class="mithila-divider">
+          <div class="mithila-line"></div>
+          <svg class="mithila-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+          <div class="mithila-line"></div>
+        </div>
+        <p class="section-desc">
+          Choose from opulent indoor ballrooms, heritage mandap halls, and expansive open-air lawns to suit your event scale.
+        </p>
+      </div>
+
+      <!-- Venue Tabs -->
+      <div class="venue-tabs">
+        <button class="venue-tab-btn active" onclick="switchVenue('ballroom', this)">Grand Ballroom</button>
+        <button class="venue-tab-btn" onclick="switchVenue('lawn', this)">Lotus Heritage Garden Lawn</button>
+        <button class="venue-tab-btn" onclick="switchVenue('hall', this)">Mithila Heritage Hall</button>
+        <button class="venue-tab-btn" onclick="switchVenue('terrace', this)">Crown Terrace Lounge</button>
+      </div>
+
+      <!-- Venue Card Display -->
+      <div class="venue-display-card" id="venueCardDisplay">
+        <div class="venue-img-side">
+          <img src="assets/wedding_hall.jpg" alt="Grand Ballroom" id="venueDisplayImg">
+        </div>
+        <div class="venue-info-side">
+          <div class="venue-capacity-badge">
+            <i data-lucide="users"></i> <span id="venueDisplayCapacity">Capacity: 500+ Guests</span>
+          </div>
+          <h3 class="venue-name" id="venueDisplayName">Grand Ballroom</h3>
+          <p class="venue-suitable" id="venueDisplaySuitable">
+            Suitable For: Weddings • Grand Receptions • Corporate Conferences
+          </p>
+
+          <div class="venue-facilities-title">Available Facilities</div>
+          <div class="facilities-grid" id="venueDisplayFacilities">
+            <div class="facility-item"><i data-lucide="check"></i> Majestic Stage</div>
+            <div class="facility-item"><i data-lucide="check"></i> Surround Sound System</div>
+            <div class="facility-item"><i data-lucide="check"></i> Intelligent Lighting</div>
+            <div class="facility-item"><i data-lucide="check"></i> In-House Gourmet Catering</div>
+            <div class="facility-item"><i data-lucide="check"></i> Bridal Dressing Room</div>
+            <div class="facility-item"><i data-lucide="check"></i> Ample Valet Parking</div>
+          </div>
+
+          <button class="btn btn-primary-wine" onclick="openEventModal()">Reserve Venue</button>
+        </div>
+      </div>
+
+      <!-- Interactive Venue Capacity Calculator -->
+      <div class="venue-calculator-box">
+        <div class="calc-grid">
+          <div>
+            <h3 class="calc-title">Venue Capacity Estimator</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted-light);">
+              Drag the slider to select your expected guest count, and our intelligent system will recommend the ideal venue for your celebration.
+            </p>
+            <div class="calc-range-wrapper">
+              <label style="font-size: 0.85rem; color: var(--color-gold); font-weight: 600;">EXPECTED GUESTS: <span id="guestCountVal" style="font-size: 1.2rem; color: #FFF;">350</span> Guests</label>
+              <input type="range" min="50" max="1200" step="50" value="350" class="range-slider" id="guestRangeSlider" oninput="updateGuestCalculator(this.value)">
+            </div>
+          </div>
+
+          <div class="calc-result-box">
+            <div style="font-size: 0.8rem; letter-spacing: 0.1em; color: var(--color-gold); text-transform: uppercase; margin-bottom: 0.5rem;">RECOMMENDED VENUE</div>
+            <h4 id="calcRecVenueName" style="font-family: var(--font-heading); font-size: 1.8rem; color: #FFF; margin-bottom: 0.5rem;">Grand Ballroom or Mithila Hall</h4>
+            <p id="calcRecVenueDesc" style="font-size: 0.9rem; color: var(--color-champagne);">Perfect for comfortable seating, dining setup, and dance stage.</p>
+            <button class="btn btn-primary-gold" style="margin-top: 1rem; padding: 0.6rem 1.25rem; font-size: 0.85rem;" onclick="openEventModal()">Get Quote For This Venue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       DINING SECTION
+       ========================================================================== -->
+  <section class="dining-section section-padding" id="dining">
+    <div class="container">
+      <div class="dining-grid">
+        <!-- Left: Imagery Stack -->
+        <div class="dining-gallery-stack">
+          <img src="assets/resort_hero.jpg" alt="Gourmet Food Presentation">
+          <img src="assets/wedding_hall.jpg" alt="Fine Dining Restaurant Interior">
+          <img src="assets/royal_suite.jpg" alt="Indian Royal Thali">
+          <img src="assets/resort_hero.jpg" alt="Artisanal Drinks & Refreshments">
+        </div>
+
+        <!-- Right: Dining Story -->
+        <div>
+          <span class="subheading-badge">GASTRONOMIC JOURNEY</span>
+          <h2 class="section-title">A Taste Worth Remembering</h2>
+          
+          <div class="mithila-divider" style="justify-content: flex-start;">
+            <div class="mithila-line" style="width: 50px;"></div>
+            <svg class="mithila-icon" viewBox="0 0 24 24"><path d="M12 2L15 8L21 9L16.5 13.5L18 19.5L12 16.5L6 19.5L7.5 13.5L3 9L9 8L12 2Z"/></svg>
+            <div class="mithila-line" style="width: 100px;"></div>
+          </div>
+
+          <p class="section-desc" style="text-align: left; margin: 0 0 1.5rem 0;">
+            At VinHere, culinary art is celebrated with passion. Our master chefs prepare flavorful feasts blending royal Indian traditions, authentic Mithila & Bengali recipes, and continental delights.
+          </p>
+
+          <div class="dining-cuisines-list">
+            <div class="cuisine-card">
+              <h3 class="cuisine-name">Royal Indian & Awadhi Specialties</h3>
+              <p class="cuisine-desc">Aromatic biryanis, rich Mughlai gravies, and tandoori starters baked in clay ovens.</p>
+            </div>
+            <div class="cuisine-card">
+              <h3 class="cuisine-name">Traditional Mithila & Bengali Cuisine</h3>
+              <p class="cuisine-desc">Authentic regional recipes prepared with freshly ground native spices and pure ghee.</p>
+            </div>
+            <div class="cuisine-card">
+              <h3 class="cuisine-name">Snacks, Beverages & Event Catering</h3>
+              <p class="cuisine-desc">Customized lavish buffet spreads, live counters, mocktails, and wedding catering options.</p>
+            </div>
+          </div>
+
+          <button class="btn btn-primary-wine" onclick="openBookingModal()">Explore Dining & Reserve Table</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       EXPERIENCE VINHERE (FULL-WIDTH PARALLAX & ANIMATED STATS)
+       ========================================================================== -->
+  <section class="experience-banner" style="background-image: url('assets/resort_hero.jpg');">
+    <div class="experience-overlay"></div>
+    <div class="container experience-content">
+      <div class="hero-crown-badge">
+        <svg viewBox="0 0 24 24"><path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5Z" fill="currentColor"/></svg>
+        <span class="hero-crown-text">ROYAL LEGACY</span>
+      </div>
+
+      <h2 class="experience-quote">
+        Your Moments.
+        <span>Our Hospitality.</span>
+        One Unforgettable Experience.
+      </h2>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="1200">1,200+</div>
+          <div class="stat-label">Events & Weddings Hosted</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="50">50+</div>
+          <div class="stat-label">Luxury Rooms & Suites</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="99">99%</div>
+          <div class="stat-label">Guest Satisfaction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="15">15+</div>
+          <div class="stat-label">Acres Resort Estate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       GALLERY SECTION & LIGHTBOX
+       ========================================================================== -->
+  <section class="gallery-section section-padding" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="subheading-badge">VISUAL JOURNEY</span>
+        <h2 class="section-title">Explore VinHere Estate</h2>
+        <div class="mithila-divider">
+          <div class="mithila-line"></div>
+          <svg class="mithila-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+          <div class="mithila-line"></div>
+        </div>
+        <p class="section-desc">
+          Browse through moments captured at our resort, from lush landscapes and opulent rooms to grand wedding setups.
+        </p>
+      </div>
+
+      <!-- Filters -->
+      <div class="gallery-filters">
+        <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+        <button class="filter-btn" onclick="filterGallery('rooms', this)">Rooms</button>
+        <button class="filter-btn" onclick="filterGallery('weddings', this)">Weddings</button>
+        <button class="filter-btn" onclick="filterGallery('events', this)">Events</button>
+        <button class="filter-btn" onclick="filterGallery('dining', this)">Dining</button>
+        <button class="filter-btn" onclick="filterGallery('property', this)">Property</button>
+      </div>
+
+      <!-- Masonry Grid -->
+      <div class="gallery-masonry" id="galleryGrid">
+        <div class="gallery-item wide property" onclick="openLightbox(0)">
+          <img src="assets/resort_hero.jpg" alt="Resort Facade at Dusk" class="gallery-img">
+          <div class="gallery-overlay-hover">
+            <div class="gallery-zoom-icon"><i data-lucide="maximize-2"></i></div>
+            <h4 class="gallery-title">Resort Facade at Dusk</h4>
+            <span class="gallery-category">Property</span>
+          </div>
+        </div>
+
+        <div class="gallery-item tall weddings" onclick="openLightbox(1)">
+          <img src="assets/wedding_hall.jpg" alt="Grand Royal Wedding Mandap" class="gallery-img">
+          <div class="gallery-overlay-hover">
+            <div class="gallery-zoom-icon"><i data-lucide="maximize-2"></i></div>
+            <h4 class="gallery-title">Grand Wedding Mandap</h4>
+            <span class="gallery-category">Weddings</span>
+          </div>
+        </div>
+
+        <div class="gallery-item rooms" onclick="openLightbox(2)">
+          <img src="assets/royal_suite.jpg" alt="Royal Presidential Suite" class="gallery-img">
+          <div class="gallery-overlay-hover">
+            <div class="gallery-zoom-icon"><i data-lucide="maximize-2"></i></div>
+            <h4 class="gallery-title">Royal Presidential Suite</h4>
+            <span class="gallery-category">Rooms</span>
+          </div>
+        </div>
+
+        <div class="gallery-item dining" onclick="openLightbox(3)">
+          <img src="assets/resort_hero.jpg" alt="Gourmet Dining Setup" class="gallery-img">
+          <div class="gallery-overlay-hover">
+            <div class="gallery-zoom-icon"><i data-lucide="maximize-2"></i></div>
+            <h4 class="gallery-title">Gourmet Restaurant</h4>
+            <span class="gallery-category">Dining</span>
+          </div>
+        </div>
+
+        <div class="gallery-item events" onclick="openLightbox(4)">
+          <img src="assets/wedding_hall.jpg" alt="Sangeet Night Stage" class="gallery-img">
+          <div class="gallery-overlay-hover">
+            <div class="gallery-zoom-icon"><i data-lucide="maximize-2"></i></div>
+            <h4 class="gallery-title">Sangeet Night Stage</h4>
+            <span class="gallery-category">Events</span>
+          </div>
+        </div>
+
+        <div class="gallery-item property" onclick="openLightbox(5)">
+          <img src="assets/resort_hero.jpg" alt="Reflecting Pool & Gardens" class="gallery-img">
+          <div class="gallery-overlay-hover">
+            <div class="gallery-zoom-icon"><i data-lucide="maximize-2"></i></div>
+            <h4 class="gallery-title">Reflecting Pool & Gardens</h4>
+            <span class="gallery-category">Property</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       WEDDING & EVENT ENQUIRY FORM SECTION
+       ========================================================================== -->
+  <section class="enquiry-section section-padding" id="enquiry">
+    <div class="container">
+      <div class="enquiry-card">
+        <div class="section-header" style="margin-bottom: 2.5rem;">
+          <span class="subheading-badge">RESERVE YOUR DATES</span>
+          <h2 class="section-title">Planning Your Special Day?</h2>
+          <p class="section-desc">
+            Fill out the details below and our senior event consultant will connect with you within 2 hours with customized packages.
+          </p>
+        </div>
+
+        <form id="weddingEnquiryForm" onsubmit="handleFormSubmission(event)">
+          <div class="enquiry-form-grid">
+            <div>
+              <label class="form-label">Your Full Name *</label>
+              <input type="text" class="form-control" required placeholder="e.g. Vikramaditya Singh">
+            </div>
+            <div>
+              <label class="form-label">Phone Number *</label>
+              <input type="tel" class="form-control" required placeholder="e.g. +91 98765 43210">
+            </div>
+            <div>
+              <label class="form-label">Email Address *</label>
+              <input type="email" class="form-control" required placeholder="e.g. vikram@example.com">
+            </div>
+            <div>
+              <label class="form-label">Event Type *</label>
+              <select class="form-control" required>
+                <option value="">-- Select Event --</option>
+                <option value="Wedding">Destination Wedding</option>
+                <option value="Reception">Grand Reception</option>
+                <option value="Engagement">Engagement / Sangeet</option>
+                <option value="Birthday">Birthday / Family Party</option>
+                <option value="Corporate">Corporate Conference / Gala</option>
+                <option value="Stay">Resort Luxury Stay</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Event Date *</label>
+              <input type="date" class="form-control" required>
+            </div>
+            <div>
+              <label class="form-label">Expected Guest Count *</label>
+              <input type="number" class="form-control" required placeholder="e.g. 400">
+            </div>
+            <div class="form-group-full">
+              <label class="form-label">Special Requirements / Message</label>
+              <textarea class="form-control" placeholder="Tell us about your decor preferences, catering choices, or room requirement..."></textarea>
+            </div>
+            <div class="form-group-full" style="text-align: center; margin-top: 1rem;">
+              <button type="submit" class="btn btn-primary-gold" style="width: 100%; max-width: 320px;">Send Enquiry</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TESTIMONIALS CAROUSEL SECTION
+       ========================================================================== -->
+  <section class="testimonials-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="subheading-badge" style="color: var(--color-gold);">GUEST REVIEWS</span>
+        <h2 class="section-title light-text">Stories of Celebration & Comfort</h2>
+        <div class="mithila-divider">
+          <div class="mithila-line"></div>
+          <svg class="mithila-icon" viewBox="0 0 24 24"><path d="M12 2L15 8L21 9L16.5 13.5L18 19.5L12 16.5L6 19.5L7.5 13.5L3 9L9 8L12 2Z"/></svg>
+          <div class="mithila-line"></div>
+        </div>
+      </div>
+
+      <div class="testimonial-carousel-container">
+        <div class="testimonial-card" id="testimonialCard">
+          <div class="stars-rating">★★★★★</div>
+          <p class="testimonial-text" id="testimonialText">
+            "An amazing experience from start to finish. The hospitality, ambience and arrangements made our celebration truly memorable. Our guests were wowed by the decor and catering!"
+          </p>
+          <div class="testimonial-author" id="testimonialAuthor">— Rajesh & Sunita Sharma</div>
+          <div class="testimonial-event-tag" id="testimonialTag">Royal Wedding Host</div>
+        </div>
+
+        <div class="carousel-nav">
+          <div class="carousel-dot active" onclick="setTestimonial(0)"></div>
+          <div class="carousel-dot" onclick="setTestimonial(1)"></div>
+          <div class="carousel-dot" onclick="setTestimonial(2)"></div>
+          <div class="carousel-dot" onclick="setTestimonial(3)"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       LOCATION & MAP SECTION
+       ========================================================================== -->
+  <section class="location-section section-padding" id="location">
+    <div class="container">
+      <div class="section-header">
+        <span class="subheading-badge">FIND YOUR WAY</span>
+        <h2 class="section-title">Find Your Way to VinHere</h2>
+        <div class="mithila-divider">
+          <div class="mithila-line"></div>
+          <svg class="mithila-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+          <div class="mithila-line"></div>
+        </div>
+      </div>
+
+      <div class="location-grid">
+        <div class="location-info">
+          <div class="location-info-item">
+            <div class="location-icon-box"><i data-lucide="map-pin"></i></div>
+            <div>
+              <h4 class="location-item-title">Resort Address</h4>
+              <p class="location-item-text">
+                VinHere Hotel & Resort, Royal Heritage Expressway, Mithila Circle, Bihar 846004, India.
+              </p>
+            </div>
+          </div>
+
+          <div class="location-info-item">
+            <div class="location-icon-box"><i data-lucide="phone"></i></div>
+            <div>
+              <h4 class="location-item-title">Contact Phone Numbers</h4>
+              <p class="location-item-text">
+                Front Desk: +91 98765 43210<br>
+                Event & Wedding Desk: +91 91234 56789
+              </p>
+            </div>
+          </div>
+
+          <div class="location-info-item">
+            <div class="location-icon-box"><i data-lucide="navigation"></i></div>
+            <div>
+              <h4 class="location-item-title">Nearby Transit & Landmarks</h4>
+              <p class="location-item-text">
+                • 45 Mins drive from Patna International Airport<br>
+                • 15 Mins from Main Railway Station<br>
+                • Direct access from National Highway
+              </p>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+            <a href="https://maps.google.com" target="_blank" class="btn btn-primary-gold">
+              <i data-lucide="navigation"></i> Get Directions
+            </a>
+            <a href="https://wa.me/919876543210" target="_blank" class="btn btn-outline-wine">
+              <i data-lucide="message-circle"></i> WhatsApp Us
+            </a>
+          </div>
+        </div>
+
+        <div class="map-wrapper">
+          <!-- Interactive Map placeholder / Styled iframe -->
+          <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115133.01017006886!2d85.07300188610731!3d25.608175586616056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed58dce6732867%3A0x4059f39a1ac82f06!2sPatna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CONTACT CTA (FULL-WIDTH DARK LUXURY SECTION)
+       ========================================================================== -->
+  <section class="contact-cta-section">
+    <div class="container">
+      <h2 class="contact-cta-title">Let's Create Something Memorable</h2>
+      <p class="contact-cta-subtitle">
+        "Whether you're planning a stay, wedding or celebration, our team is ready to help."
+      </p>
+      <div class="contact-cta-buttons">
+        <button class="btn btn-primary-gold" onclick="openBookingModal()">Book a Room</button>
+        <button class="btn btn-primary-wine" onclick="openEventModal()">Plan an Event</button>
+        <a href="tel:+919876543210" class="btn btn-outline-gold"><i data-lucide="phone"></i> Call Us</a>
+        <a href="https://wa.me/919876543210" target="_blank" class="btn btn-outline-gold"><i data-lucide="message-circle"></i> WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-logo">VINHERE</div>
+          <div class="footer-brand-sub">HOTEL & RESORT</div>
+          <p class="footer-about-text">
+            A luxury destination resort where timeless Indian royal heritage meets contemporary hospitality. Perfect for plush stays, royal destination weddings, and memorable events.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon-btn"><i data-lucide="instagram"></i></a>
+            <a href="#" class="social-icon-btn"><i data-lucide="facebook"></i></a>
+            <a href="#" class="social-icon-btn"><i data-lucide="youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title">Quick Links</h4>
+          <div class="footer-links">
+            <a href="#hero">Home</a>
+            <a href="#about">About VinHere</a>
+            <a href="#rooms">Rooms & Suites</a>
+            <a href="#dining">Dining & Culinary</a>
+            <a href="#weddings">Weddings & Events</a>
+            <a href="#venues">Banquet Venues</a>
+            <a href="#gallery">Photo Gallery</a>
+            <a href="#location">Contact & Location</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title">Venues & Stays</h4>
+          <div class="footer-links">
+            <a href="#rooms">Deluxe Rooms</a>
+            <a href="#rooms">Royal Presidential Suite</a>
+            <a href="#venues">Grand Ballroom</a>
+            <a href="#venues">Lotus Garden Lawn</a>
+            <a href="#venues">Mithila Heritage Hall</a>
+            <a href="#venues">Crown Terrace Lounge</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title">Contact Us</h4>
+          <div class="footer-links">
+            <span><i data-lucide="map-pin" style="width: 14px; color: var(--color-gold);"></i> Royal Heritage Expressway, Bihar</span>
+            <span><i data-lucide="phone" style="width: 14px; color: var(--color-gold);"></i> +91 98765 43210</span>
+            <span><i data-lucide="mail" style="width: 14px; color: var(--color-gold);"></i> info@vinhere.com</span>
+            <span><i data-lucide="clock" style="width: 14px; color: var(--color-gold);"></i> 24/7 Front Desk & Security</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 VinHere Hotel & Resort. All Rights Reserved.</div>
+        <div style="font-size: 0.8rem; color: var(--color-gold-dark);">Designed with Royal Indian Hospitality</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODALS & LIGHTBOX
+       ========================================================================== -->
+  <!-- Booking / General Modal -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-card">
+      <span class="modal-close-btn" onclick="closeBookingModal()">&times;</span>
+      <h3 class="section-title" style="font-size: 2rem; margin-bottom: 0.5rem;" id="modalTitle">Book Your Stay</h3>
+      <p style="font-size: 0.95rem; color: var(--text-muted-dark); margin-bottom: 1.5rem;" id="modalSub">Select dates and room preferences for your reservation.</p>
+
+      <form onsubmit="handleModalForm(event)">
+        <div class="enquiry-form-grid">
+          <div>
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" required placeholder="John Doe">
+          </div>
+          <div>
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" required placeholder="+91 98765 43210">
+          </div>
+          <div>
+            <label class="form-label">Check-In Date</label>
+            <input type="date" class="form-control" required>
+          </div>
+          <div>
+            <label class="form-label">Check-Out Date</label>
+            <input type="date" class="form-control" required>
+          </div>
+          <div class="form-group-full">
+            <label class="form-label">Selected Room / Service</label>
+            <input type="text" class="form-control" id="modalSelectedRoom" value="Royal Presidential Suite">
+          </div>
+          <div class="form-group-full" style="margin-top: 1rem;">
+            <button type="submit" class="btn btn-primary-gold" style="width: 100%;">Confirm Booking Request</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Gallery Lightbox -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <button class="lightbox-prev" onclick="changeLightboxImage(-1)">&larr;</button>
+    <button class="lightbox-next" onclick="changeLightboxImage(1)">&rarr;</button>
+    <div class="lightbox-content">
+      <img src="" alt="Lightbox Image" class="lightbox-img" id="lightboxImg">
+      <div class="lightbox-caption" id="lightboxCaption">Resort View</div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="confirmation-toast" id="confirmationToast">
+    <i data-lucide="check-circle" style="color: var(--color-gold); width: 28px; height: 28px;"></i>
+    <div>
+      <h4 style="font-family: var(--font-heading); font-size: 1.2rem; color: #FFF;">Enquiry Received!</h4>
+      <p style="font-size: 0.85rem; color: var(--color-champagne);">Thank you. Our royal concierge team will call you shortly.</p>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
