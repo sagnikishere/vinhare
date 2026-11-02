@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PropertyItem } from '../../types';
-import { X, MapPin, Phone, CheckCircle2, ArrowRight, Sparkles, Calendar } from 'lucide-react';
+import { X, MapPin, Phone, CheckCircle2, ArrowRight, Sparkles, Calendar, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { BRAND_INFO } from '../../data/vinhareData';
 
 interface PropertyDetailModalProps {
@@ -17,6 +17,8 @@ export const PropertyDetailModal: React.FC<PropertyDetailModalProps> = ({
   onClose,
   onOpenEnquiry,
 }) => {
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+
   if (!property) return null;
 
   return (
@@ -111,18 +113,123 @@ export const PropertyDetailModal: React.FC<PropertyDetailModalProps> = ({
 
               {/* Property Image Gallery Grid */}
               <div>
-                <h3 className="text-xs tracking-[0.35em] text-[#B8860B] uppercase font-bold mb-6">
-                  PROPERTY GALLERY
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 className="text-xs tracking-[0.35em] text-[#B8860B] uppercase font-bold">
+                      PROPERTY GALLERY
+                    </h3>
+                    <p className="text-xs text-[#6B5E4F] mt-0.5">
+                      Explore authentic views and event spaces across the property
+                    </p>
+                  </div>
+                  <span className="glass-pill text-[10px] tracking-[0.2em] font-bold text-[#B8860B] px-3.5 py-1.5 rounded-full border border-[#D4AF37]/45 uppercase shadow-sm">
+                    {property.gallery.length} REAL PHOTOS
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {property.gallery.map((imgUrl, idx) => (
-                    <div key={idx} className="aspect-[4/3] rounded-2xl overflow-hidden glass-panel border-2 border-[#D4AF37]/35 shadow-sm group">
-                      <img src={imgUrl} alt={`${property.name} ${idx}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div
+                      key={idx}
+                      onClick={() => setLightboxIdx(idx)}
+                      className="aspect-[4/3] rounded-2xl overflow-hidden glass-panel border-2 border-[#D4AF37]/35 shadow-sm group relative cursor-pointer"
+                    >
+                      <img
+                        src={imgUrl}
+                        alt={`${property.name} photo ${idx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span className="px-3 py-1.5 rounded-full bg-white/90 text-black text-[10px] tracking-wider uppercase font-bold flex items-center space-x-1.5 shadow-lg">
+                          <Maximize2 className="w-3.5 h-3.5 text-[#B8860B]" />
+                          <span>EXPAND</span>
+                        </span>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
+
+            {/* Lightbox Modal */}
+            <AnimatePresence>
+              {lightboxIdx !== null && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-[2000] bg-black/95 backdrop-blur-xl flex flex-col justify-between p-4 sm:p-8"
+                >
+                  <div className="flex items-center justify-between text-white z-10">
+                    <span className="text-xs tracking-[0.25em] text-[#F3E5AB] font-mono">
+                      {property.name} • {lightboxIdx + 1} OF {property.gallery.length}
+                    </span>
+                    <button
+                      onClick={() => setLightboxIdx(null)}
+                      className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+                      title="Close"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  <div className="relative flex-1 flex items-center justify-center my-4 overflow-hidden">
+                    <motion.img
+                      key={lightboxIdx}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.25 }}
+                      src={property.gallery[lightboxIdx]}
+                      alt={`${property.name} ${lightboxIdx + 1}`}
+                      className="max-h-[82vh] max-w-full object-contain rounded-2xl shadow-2xl border border-white/10"
+                    />
+
+                    {/* Nav arrows */}
+                    {property.gallery.length > 1 && (
+                      <>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setLightboxIdx((lightboxIdx - 1 + property.gallery.length) % property.gallery.length);
+                          }}
+                          className="absolute left-2 sm:left-6 p-3 rounded-full bg-black/60 hover:bg-[#D4AF37] hover:text-black text-white transition-all border border-white/20 shadow-xl"
+                          title="Previous Photo"
+                        >
+                          <ChevronLeft className="w-6 h-6" />
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setLightboxIdx((lightboxIdx + 1) % property.gallery.length);
+                          }}
+                          className="absolute right-2 sm:right-6 p-3 rounded-full bg-black/60 hover:bg-[#D4AF37] hover:text-black text-white transition-all border border-white/20 shadow-xl"
+                          title="Next Photo"
+                        >
+                          <ChevronRight className="w-6 h-6" />
+                        </button>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Thumbnail Bar */}
+                  <div className="flex items-center justify-center space-x-2 overflow-x-auto py-2 px-4 max-w-4xl mx-auto scrollbar-none">
+                    {property.gallery.map((thumb, tIdx) => (
+                      <button
+                        key={tIdx}
+                        onClick={() => setLightboxIdx(tIdx)}
+                        className={`flex-shrink-0 w-12 h-9 sm:w-16 sm:h-12 rounded-lg overflow-hidden border-2 transition-all ${
+                          lightboxIdx === tIdx ? 'border-[#D4AF37] scale-105 shadow-md' : 'border-white/20 opacity-50 hover:opacity-100'
+                        }`}
+                      >
+                        <img src={thumb} alt="" className="w-full h-full object-cover" />
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Right Sticky Enquiry Sidebar */}
             <div className="lg:col-span-4">

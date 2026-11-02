@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GALLERY_ITEMS } from '../../data/vinhareData';
 import { GalleryItem } from '../../types';
-import { X, ChevronLeft, ChevronRight, Maximize2, Sparkles } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Maximize2, Sparkles, ArrowRight } from 'lucide-react';
 
 export const GallerySection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<
@@ -119,6 +120,17 @@ export const GallerySection: React.FC = () => {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Dedicated Gallery Page Link */}
+        <div className="mt-14 text-center">
+          <Link
+            href="/gallery"
+            className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] text-white text-xs font-bold tracking-[0.2em] uppercase rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all border border-[#D4AF37]/50 cursor-pointer"
+          >
+            <span>VIEW COMPLETE REAL PHOTO ARCHIVE (18+ PHOTOS)</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
 
       {/* Fullscreen Glassmorphic Lightbox Modal */}

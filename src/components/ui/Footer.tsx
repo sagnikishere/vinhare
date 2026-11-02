@@ -1,29 +1,18 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { BRAND_INFO } from '../../data/vinhareData';
 import { Phone, MapPin, Mail, ArrowUpRight, Share2, Globe } from 'lucide-react';
-import { PropertyItem } from '../../types';
-import { useSmoothScroll } from '../providers/SmoothScrollProvider';
 
 interface FooterProps {
   onOpenEnquiry: (option?: string) => void;
   onSelectPropertyBySlug?: (slug: string) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry, onSelectPropertyBySlug }) => {
-  const { scrollTo } = useSmoothScroll();
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
-    e.preventDefault();
-    if (target === '#' || target === '#home') {
-      scrollTo(0, { duration: 1.4 });
-    } else {
-      scrollTo(target, { offset: -70, duration: 1.4 });
-    }
-  };
+export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry }) => {
   return (
-    <footer className="relative bg-[#FAF7F2] text-[#1A1814] pt-24 pb-12 border-t border-[#D4AF37]/30 overflow-hidden">
+    <footer className="relative bg-[#FAF7F2] text-[#1A1814] pt-20 pb-12 border-t border-[#D4AF37]/30 overflow-hidden">
       {/* Subtle Background Radial Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#D4AF37]/10 rounded-full blur-[150px] pointer-events-none" />
 
@@ -32,14 +21,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry, onSelectPropertyB
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-[#D4AF37]/30">
           {/* Brand Col */}
           <div className="lg:col-span-4 flex flex-col space-y-6">
-            <div className="flex flex-col">
-              <span className="font-serif-luxury text-4xl tracking-[0.2em] font-light text-[#B8860B]">
+            <Link href="/" className="flex flex-col group">
+              <span className="font-serif-luxury text-4xl tracking-[0.2em] font-light text-[#B8860B] group-hover:text-[#997022] transition-colors">
                 VINHARE
               </span>
               <span className="text-[10px] tracking-[0.35em] text-[#8C8275] uppercase font-bold -mt-1">
                 HOTEL & RESORT
               </span>
-            </div>
+            </Link>
 
             <p className="text-sm font-serif italic text-[#2C261E] font-light max-w-sm">
               "{BRAND_INFO.taglinePrimary}"
@@ -83,34 +72,34 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry, onSelectPropertyB
             </h4>
             <ul className="space-y-2.5 text-xs text-[#443B2F] font-medium">
               <li>
-                <a href="#destinations" onClick={(e) => handleNavClick(e, '#destinations')} className="hover:text-[#B8860B] transition-colors inline-flex items-center gap-1.5 group">
+                <Link href="/destinations" className="hover:text-[#B8860B] transition-colors inline-flex items-center gap-1.5 group">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/40 group-hover:bg-[#B8860B] transition-colors" />
                   Shiv Garden Resort
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#destinations" onClick={(e) => handleNavClick(e, '#destinations')} className="hover:text-[#B8860B] transition-colors inline-flex items-center gap-1.5 group">
+                <Link href="/destinations" className="hover:text-[#B8860B] transition-colors inline-flex items-center gap-1.5 group">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/40 group-hover:bg-[#B8860B] transition-colors" />
                   J.P. Resort
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#destinations" onClick={(e) => handleNavClick(e, '#destinations')} className="hover:text-[#B8860B] transition-colors inline-flex items-center gap-1.5 group">
+                <Link href="/destinations" className="hover:text-[#B8860B] transition-colors inline-flex items-center gap-1.5 group">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/40 group-hover:bg-[#B8860B] transition-colors" />
                   Resort Raj
-                </a>
+                </Link>
               </li>
             </ul>
 
             <h4 className="text-xs tracking-[0.3em] font-bold text-[#B8860B] uppercase pt-4">
-              WEDDINGS
+              ROYAL WEDDINGS
             </h4>
             <ul className="space-y-2.5 text-xs text-[#443B2F] font-medium">
               <li>
-                <a href="#weddings" onClick={(e) => handleNavClick(e, '#weddings')} className="hover:text-[#B8860B] transition-colors inline-flex items-center gap-1.5 group">
+                <Link href="/weddings" className="hover:text-[#B8860B] transition-colors inline-flex items-center gap-1.5 group">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/40 group-hover:bg-[#B8860B] transition-colors" />
                   Mithila Marriage Services
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -118,16 +107,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry, onSelectPropertyB
           {/* Quick Nav Col */}
           <div className="lg:col-span-2 flex flex-col space-y-4">
             <h4 className="text-xs tracking-[0.3em] font-bold text-[#B8860B] uppercase">
-              NAVIGATION
+              QUICK PAGES
             </h4>
-            <ul className="space-y-2 text-xs text-[#443B2F] font-medium">
-              <li><a href="#" onClick={(e) => handleNavClick(e, '#')} className="hover:text-[#B8860B] transition-colors">Home</a></li>
-              <li><a href="#destinations" onClick={(e) => handleNavClick(e, '#destinations')} className="hover:text-[#B8860B] transition-colors">Destinations</a></li>
-              <li><a href="#weddings" onClick={(e) => handleNavClick(e, '#weddings')} className="hover:text-[#B8860B] transition-colors">Weddings</a></li>
-              <li><a href="#experiences" onClick={(e) => handleNavClick(e, '#experiences')} className="hover:text-[#B8860B] transition-colors">Experiences</a></li>
-              <li><a href="#gallery" onClick={(e) => handleNavClick(e, '#gallery')} className="hover:text-[#B8860B] transition-colors">Gallery</a></li>
-              <li><a href="#about" onClick={(e) => handleNavClick(e, '#about')} className="hover:text-[#B8860B] transition-colors">About</a></li>
-              <li><a href="#network" onClick={(e) => handleNavClick(e, '#network')} className="hover:text-[#B8860B] transition-colors">Network</a></li>
+            <ul className="space-y-2.5 text-xs text-[#443B2F] font-medium">
+              <li><Link href="/" className="hover:text-[#B8860B] transition-colors">Home</Link></li>
+              <li><Link href="/destinations" className="hover:text-[#B8860B] transition-colors">Destinations</Link></li>
+              <li><Link href="/weddings" className="hover:text-[#B8860B] transition-colors">Weddings</Link></li>
+              <li><Link href="/gallery" className="hover:text-[#B8860B] transition-colors">Gallery</Link></li>
+              <li><Link href="/about" className="hover:text-[#B8860B] transition-colors">About Us</Link></li>
+              <li><Link href="/contact" className="hover:text-[#B8860B] transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -165,7 +153,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry, onSelectPropertyB
 
               <div className="pt-2">
                 <button
-                  onClick={() => onOpenEnquiry()}
+                  onClick={() => onOpenEnquiry('General Enquiry')}
                   className="w-full py-3.5 bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#B8860B] text-white font-bold text-xs tracking-[0.2em] uppercase rounded-xl hover:shadow-[0_8px_25px_rgba(212,175,55,0.4)] transition-all transform active:scale-95 cursor-pointer"
                 >
                   PLAN AN EVENT

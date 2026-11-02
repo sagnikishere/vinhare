@@ -11,7 +11,6 @@ import { DestinationsSection } from '../components/sections/DestinationsSection'
 import { DestinationShowcase } from '../components/sections/DestinationShowcase';
 import { WeddingsSection } from '../components/sections/WeddingsSection';
 import { ExperienceSection } from '../components/sections/ExperienceSection';
-import { Interactive3DSection } from '../components/sections/Interactive3DSection';
 import { GallerySection } from '../components/sections/GallerySection';
 import { AboutSection } from '../components/sections/AboutSection';
 import { NetworkMapSection } from '../components/sections/NetworkMapSection';
@@ -99,10 +98,7 @@ export default function Home() {
           onOpenEnquiry={handleOpenEnquiry}
         />
 
-        {/* Interactive 3D Architectural Centerpiece */}
-        <Interactive3DSection />
-
-        {/* Gallery — Moments at Vinhare */}
+        {/* Gallery Preview — Moments at Vinhare */}
         <GallerySection />
 
         {/* About Vinhare — Brand Story */}
