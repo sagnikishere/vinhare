@@ -1,4 +1,3 @@
-'use me';
 'use client';
 
 import React from 'react';
@@ -107,7 +106,7 @@ export const WeddingsSection: React.FC<WeddingsSectionProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-[#1A1814]/80 via-transparent to-transparent opacity-70" />
 
               <div className="absolute top-6 left-6">
-                <span className="px-4 py-1.5 rounded-full text-xs tracking-[0.25em] font-bold text-[#F3E5AB] bg-[#1A1814]/80 backdrop-blur-md border border-[#D4AF37]/40 uppercase">
+                <span className="glass-pill-dark px-4 py-1.5 rounded-full text-xs tracking-[0.25em] font-bold text-[#F3E5AB] uppercase border border-[#D4AF37]/40 shadow-md">
                   MITHILA MARRIAGE ECOSYSTEM
                 </span>
               </div>
@@ -124,23 +123,25 @@ export const WeddingsSection: React.FC<WeddingsSectionProps> = ({
                 </h3>
               </div>
 
-              <p className="text-base text-[#2C261E] font-serif italic leading-relaxed">
-                "From intimate ceremonies to grand celebrations, create moments that deserve to be remembered."
-              </p>
+              <div className="p-4 rounded-2xl glass-panel border border-[#D4AF37]/30 shadow-sm">
+                <p className="text-base text-[#2C261E] font-serif italic leading-relaxed">
+                  "From intimate ceremonies to grand celebrations, create moments that deserve to be remembered."
+                </p>
+              </div>
 
               <p className="text-xs sm:text-sm text-[#52483B] font-light leading-relaxed">
                 Combining cultural heritage, opulent mandap craftsmanship, and end-to-end event execution across our premier resort properties in Bihar.
               </p>
 
-              {/* Service Features Checkmarks */}
-              <div className="space-y-3 pt-2">
+              {/* Service Features Checkmarks in Glass Chips */}
+              <div className="space-y-2.5 pt-2">
                 {[
                   'Royal Mandap Architecture & Floral Styling',
                   'Gourmet Festive Feast & Catering Services',
                   'Bridal & Groom Preparatory Suite Facilities',
                   'Cinematic Lighting & Sound Management',
                 ].map((feat, idx) => (
-                  <div key={idx} className="flex items-center space-x-3 text-xs text-[#1A1814] font-medium">
+                  <div key={idx} className="flex items-center space-x-3 p-3 rounded-xl glass-panel border border-[#D4AF37]/20 text-xs text-[#1A1814] font-medium shadow-sm">
                     <CheckCircle2 className="w-4 h-4 text-[#B8860B] flex-shrink-0" />
                     <span>{feat}</span>
                   </div>
@@ -152,7 +153,7 @@ export const WeddingsSection: React.FC<WeddingsSectionProps> = ({
                 <button
                   onClick={() => onOpenEnquiry('Mithila Marriage Services')}
                   data-cursor="PLAN"
-                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] text-white font-semibold text-xs tracking-[0.25em] uppercase rounded-full hover:shadow-[0_10px_30px_rgba(184,134,11,0.3)] transition-all duration-300 flex items-center justify-center space-x-2"
+                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] text-white font-semibold text-xs tracking-[0.25em] uppercase rounded-full hover:shadow-[0_10px_30px_rgba(184,134,11,0.35)] transition-all duration-300 flex items-center justify-center space-x-2 border border-[#D4AF37]/50"
                 >
                   <span>PLAN YOUR WEDDING</span>
                   <ArrowRight className="w-4 h-4" />
@@ -160,7 +161,7 @@ export const WeddingsSection: React.FC<WeddingsSectionProps> = ({
 
                 <button
                   onClick={() => onSelectProperty(mithilaProperty)}
-                  className="w-full sm:w-auto px-6 py-4 border-2 border-[#D4AF37] text-[#1A1814] hover:text-[#B8860B] hover:border-[#B8860B] text-xs tracking-[0.2em] font-semibold uppercase rounded-full transition-colors bg-white/80"
+                  className="w-full sm:w-auto px-6 py-4 glass-panel border-2 border-[#D4AF37]/60 text-[#1A1814] hover:text-[#B8860B] hover:border-[#B8860B] text-xs tracking-[0.2em] font-semibold uppercase rounded-full transition-all shadow-sm"
                 >
                   VIEW WEDDING DETAILS
                 </button>

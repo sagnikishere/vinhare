@@ -1,4 +1,3 @@
-'use me';
 'use client';
 
 import React, { useRef, useState } from 'react';
@@ -93,17 +92,19 @@ export const IntroSection: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="lg:col-span-6 flex flex-col space-y-8"
           >
-            <p className="text-lg md:text-2xl font-serif text-[#2C261E] leading-relaxed font-light">
-              "Vinhare brings together distinctive resorts, hospitality experiences and celebration destinations under one growing brand."
-            </p>
+            <div className="p-6 md:p-8 rounded-2xl glass-panel-gold border border-[#D4AF37]/35 shadow-sm">
+              <p className="text-lg md:text-2xl font-serif text-[#2C261E] leading-relaxed font-light">
+                "Vinhare brings together distinctive resorts, hospitality experiences and celebration destinations under one growing brand."
+              </p>
+            </div>
 
             <p className="text-sm md:text-base text-[#52483B] leading-relaxed font-light">
               Rooted in Bihar, India, Vinhare represents a unified standard of refined accommodation, grand celebration spaces, and warm Indian hospitality. Whether seeking a peaceful retreat, hosting a landmark wedding, or dining with loved ones, every destination delivers unmatched quality.
             </p>
 
-            {/* Core Pillars */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-[#D4AF37]/30">
-              <div className="flex flex-col space-y-2">
+            {/* Core Pillars in Glass Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div className="flex flex-col space-y-2 p-4 rounded-2xl glass-panel border border-[#D4AF37]/30 glass-card-interactive">
                 <Compass className="w-5 h-5 text-[#B8860B]" />
                 <h4 className="text-xs tracking-widest text-[#1A1814] font-bold uppercase">
                   DESTINATIONS
@@ -111,7 +112,7 @@ export const IntroSection: React.FC = () => {
                 <p className="text-[11px] text-[#786C5E]">Shiv Garden, J.P. & Resort Raj</p>
               </div>
 
-              <div className="flex flex-col space-y-2">
+              <div className="flex flex-col space-y-2 p-4 rounded-2xl glass-panel border border-[#D4AF37]/30 glass-card-interactive">
                 <Sparkles className="w-5 h-5 text-[#B8860B]" />
                 <h4 className="text-xs tracking-widest text-[#1A1814] font-bold uppercase">
                   WEDDINGS
@@ -119,7 +120,7 @@ export const IntroSection: React.FC = () => {
                 <p className="text-[11px] text-[#786C5E]">Mithila Marriage Ecosystem</p>
               </div>
 
-              <div className="flex flex-col space-y-2">
+              <div className="flex flex-col space-y-2 p-4 rounded-2xl glass-panel border border-[#D4AF37]/30 glass-card-interactive">
                 <ShieldCheck className="w-5 h-5 text-[#B8860B]" />
                 <h4 className="text-xs tracking-widest text-[#1A1814] font-bold uppercase">
                   EXCELLENCE

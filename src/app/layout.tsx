@@ -17,6 +17,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://vinhare.com"),
   title: "VINHARE HOTEL & RESORT | Luxury Hospitality in Bihar, India",
   description:
     "One Group. Multiple Destinations. Creating Experiences. Delivering Excellence. Discover Shiv Garden Resort, J.P. Resort, Resort Raj & Mithila Marriage Services.",
@@ -57,7 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${jakarta.variable} dark scroll-smooth`}
+      className={`${cormorant.variable} ${jakarta.variable} dark`}
     >
       <body className="min-h-screen bg-[#0D0C0B] text-[#FDFBF7] antialiased selection:bg-[#D4AF37] selection:text-[#0D0C0B]">
         {children}

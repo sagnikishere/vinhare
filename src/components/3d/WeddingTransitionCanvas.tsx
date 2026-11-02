@@ -1,4 +1,3 @@
-'use me';
 'use client';
 
 import React, { useRef } from 'react';

@@ -1,4 +1,3 @@
-'use me';
 'use client';
 
 import React, { useState } from 'react';
@@ -53,7 +52,7 @@ export const GallerySection: React.FC = () => {
             </h2>
           </div>
 
-          {/* Filter Categories */}
+          {/* Filter Categories in Glass Pills */}
           <div className="flex flex-wrap gap-2 mt-6 md:mt-0">
             {categories.map((cat) => (
               <button
@@ -61,8 +60,8 @@ export const GallerySection: React.FC = () => {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-2 rounded-full text-[10px] tracking-[0.2em] font-bold uppercase transition-all duration-300 ${
                   activeCategory === cat
-                    ? 'bg-[#D4AF37] text-white shadow-md'
-                    : 'bg-white text-[#786C5E] border border-[#D4AF37]/30 hover:border-[#B8860B] hover:text-[#1A1814]'
+                    ? 'bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white shadow-md border border-[#D4AF37]'
+                    : 'glass-pill text-[#786C5E] hover:border-[#B8860B] hover:text-[#1A1814]'
                 }`}
               >
                 {cat}
@@ -84,7 +83,7 @@ export const GallerySection: React.FC = () => {
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
                 onClick={() => openLightbox(idx)}
                 data-cursor="EXPAND"
-                className="relative rounded-2xl overflow-hidden glass-panel-gold border-2 border-[#D4AF37]/35 group cursor-pointer break-inside-avoid shadow-[0_15px_40px_rgba(184,134,11,0.12)]"
+                className="relative rounded-3xl overflow-hidden glass-panel-gold border-2 border-[#D4AF37]/45 group cursor-pointer break-inside-avoid shadow-[0_20px_50px_rgba(184,134,11,0.15)] hover:border-[#D4AF37]/80 hover:shadow-[0_25px_60px_rgba(184,134,11,0.25)] transition-all"
               >
                 <div
                   className={`relative w-full overflow-hidden ${
@@ -102,15 +101,16 @@ export const GallerySection: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1814] via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
 
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-full bg-white/90 text-[#B8860B] shadow-sm">
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity p-2.5 rounded-full glass-pill-dark text-[#F3E5AB] shadow-md border border-[#D4AF37]/50">
                     <Maximize2 className="w-4 h-4" />
                   </div>
 
-                  <div className="absolute bottom-4 left-4 right-4 flex flex-col">
-                    <span className="text-[10px] tracking-[0.25em] text-[#F3E5AB] font-bold uppercase">
+                  {/* Floating Glass Caption Tray */}
+                  <div className="absolute bottom-3 left-3 right-3 p-3.5 rounded-xl glass-dark border border-white/15 backdrop-blur-md flex flex-col">
+                    <span className="text-[10px] tracking-[0.25em] text-[#D4AF37] font-bold uppercase">
                       {item.property}
                     </span>
-                    <h4 className="font-serif-luxury text-xl text-white font-light mt-0.5">
+                    <h4 className="font-serif-luxury text-lg sm:text-xl text-white font-light mt-0.5">
                       {item.title}
                     </h4>
                   </div>
@@ -121,26 +121,26 @@ export const GallerySection: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Fullscreen Lightbox Modal */}
+      {/* Fullscreen Glassmorphic Lightbox Modal */}
       <AnimatePresence>
         {lightboxIndex !== null && filteredItems[lightboxIndex] && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[1000] bg-white/95 backdrop-blur-2xl flex flex-col justify-between p-6 md:p-12 text-[#1A1814]"
+            className="fixed inset-0 z-[1000] bg-[#100E0C]/90 backdrop-blur-3xl flex flex-col justify-between p-6 md:p-12 text-[#FDFBF7]"
           >
             {/* Top Lightbox Header */}
             <div className="flex items-center justify-between z-20">
-              <div className="flex items-center space-x-3">
-                <Sparkles className="w-4 h-4 text-[#B8860B]" />
-                <span className="text-xs tracking-[0.3em] text-[#B8860B] uppercase font-bold">
+              <div className="glass-pill-dark px-4 py-2 rounded-full flex items-center space-x-3 border border-[#D4AF37]/40">
+                <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+                <span className="text-xs tracking-[0.3em] text-[#F3E5AB] uppercase font-bold">
                   VINHARE GALLERY • {lightboxIndex + 1} OF {filteredItems.length}
                 </span>
               </div>
               <button
                 onClick={closeLightbox}
-                className="p-3 rounded-full border border-[#D4AF37]/50 text-[#B8860B] hover:bg-[#D4AF37] hover:text-white transition-colors"
+                className="p-3 rounded-full glass-pill-dark border border-[#D4AF37]/50 text-[#F3E5AB] hover:bg-[#D4AF37] hover:text-white transition-all shadow-md"
                 aria-label="Close Lightbox"
               >
                 <X className="w-6 h-6" />
@@ -151,7 +151,7 @@ export const GallerySection: React.FC = () => {
             <div className="relative flex-1 flex items-center justify-center my-6 z-10">
               <button
                 onClick={prevLightboxItem}
-                className="absolute left-0 md:left-6 z-20 p-4 rounded-full border border-[#D4AF37]/50 bg-white/90 text-[#B8860B] hover:bg-[#D4AF37] hover:text-white transition-colors shadow-md"
+                className="absolute left-0 md:left-6 z-20 p-4 rounded-full glass-pill-dark border border-[#D4AF37]/50 text-[#F3E5AB] hover:bg-[#D4AF37] hover:text-white transition-all shadow-md"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
@@ -164,12 +164,12 @@ export const GallerySection: React.FC = () => {
                 transition={{ duration: 0.4 }}
                 src={filteredItems[lightboxIndex].image}
                 alt={filteredItems[lightboxIndex].title}
-                className="max-h-[75vh] max-w-full object-contain rounded-2xl border-2 border-[#D4AF37]/40 shadow-[0_20px_60px_rgba(184,134,11,0.2)]"
+                className="max-h-[75vh] max-w-full object-contain rounded-2xl border-2 border-[#D4AF37]/40 shadow-[0_25px_60px_rgba(0,0,0,0.5)]"
               />
 
               <button
                 onClick={nextLightboxItem}
-                className="absolute right-0 md:right-6 z-20 p-4 rounded-full border border-[#D4AF37]/50 bg-white/90 text-[#B8860B] hover:bg-[#D4AF37] hover:text-white transition-colors shadow-md"
+                className="absolute right-0 md:right-6 z-20 p-4 rounded-full glass-pill-dark border border-[#D4AF37]/50 text-[#F3E5AB] hover:bg-[#D4AF37] hover:text-white transition-all shadow-md"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
@@ -177,12 +177,14 @@ export const GallerySection: React.FC = () => {
 
             {/* Bottom Caption Bar */}
             <div className="text-center z-20">
-              <span className="text-xs tracking-[0.25em] text-[#B8860B] uppercase font-bold">
-                {filteredItems[lightboxIndex].property}
-              </span>
-              <h3 className="font-serif-luxury text-2xl md:text-3xl font-light text-[#1A1814]">
-                {filteredItems[lightboxIndex].title}
-              </h3>
+              <div className="glass-dark px-6 py-3.5 rounded-2xl border border-white/10 max-w-md mx-auto backdrop-blur-xl shadow-xl">
+                <span className="text-[11px] tracking-[0.25em] text-[#D4AF37] uppercase font-bold">
+                  {filteredItems[lightboxIndex].property}
+                </span>
+                <h3 className="font-serif-luxury text-xl md:text-2xl font-light text-white mt-0.5">
+                  {filteredItems[lightboxIndex].title}
+                </h3>
+              </div>
             </div>
           </motion.div>
         )}

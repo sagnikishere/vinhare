@@ -1,4 +1,3 @@
-'use me';
 'use client';
 
 import React, { useState } from 'react';
@@ -73,18 +72,18 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[1000] bg-white/80 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+      <div className="fixed inset-0 z-[1000] bg-[#12100E]/70 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ duration: 0.4 }}
-          className="relative w-full max-w-3xl rounded-3xl glass-panel-gold border-2 border-[#D4AF37]/50 p-8 sm:p-12 shadow-[0_30px_90px_rgba(184,134,11,0.2)] overflow-hidden text-[#1A1814]"
+          className="relative w-full max-w-3xl rounded-3xl glass-panel-gold border-2 border-[#D4AF37]/50 p-8 sm:p-12 shadow-[0_30px_90px_rgba(0,0,0,0.3)] overflow-hidden text-[#1A1814]"
         >
           {/* Top Close Button */}
           <button
             onClick={resetForm}
-            className="absolute top-6 right-6 p-3 rounded-full border border-[#D4AF37]/50 text-[#B8860B] hover:bg-[#D4AF37] hover:text-white transition-colors"
+            className="absolute top-6 right-6 p-3 rounded-full glass-panel border border-[#D4AF37]/50 text-[#B8860B] hover:bg-[#D4AF37] hover:text-white transition-all shadow-sm"
           >
             <X className="w-5 h-5" />
           </button>
@@ -103,7 +102,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               </div>
 
               {/* Progress Bar */}
-              <div className="h-1.5 w-full bg-[#EAE4D9] rounded-full overflow-hidden mb-10">
+              <div className="h-1.5 w-full bg-[#EAE4D9]/80 rounded-full overflow-hidden mb-10">
                 <motion.div
                   className="h-full bg-gradient-to-r from-[#B8860B] to-[#D4AF37]"
                   style={{ width: `${(step / 5) * 100}%` }}
@@ -137,8 +136,8 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                             }}
                             className={`p-4 rounded-xl text-xs tracking-widest font-bold uppercase border transition-all ${
                               formData.occasion === occ
-                                ? 'bg-[#D4AF37] text-white border-[#D4AF37] shadow-sm'
-                                : 'bg-white text-[#1A1814] border-[#D4AF37]/30 hover:border-[#B8860B]'
+                                ? 'bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white border-[#D4AF37] shadow-md'
+                                : 'glass-panel text-[#1A1814] border-[#D4AF37]/30 hover:border-[#B8860B]'
                             }`}
                           >
                             {occ}
@@ -169,10 +168,10 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                               setFormData({ ...formData, destination: dest });
                               handleNext();
                             }}
-                            className={`p-4 text-left rounded-xl text-xs tracking-wider font-bold border transition-all ${
+                            className={`p-4 text-left rounded-2xl text-xs tracking-wider font-bold border transition-all ${
                               formData.destination === dest
-                                ? 'bg-[#D4AF37] text-white border-[#D4AF37] shadow-sm'
-                                : 'bg-white text-[#1A1814] border-[#D4AF37]/30 hover:border-[#B8860B]'
+                                ? 'bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white border-[#D4AF37] shadow-md'
+                                : 'glass-panel text-[#1A1814] border-[#D4AF37]/30 hover:border-[#B8860B]'
                             }`}
                           >
                             {dest}
@@ -200,7 +199,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                           type="date"
                           value={formData.date}
                           onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                          className="w-full pl-12 pr-4 py-4 rounded-xl bg-white border border-[#D4AF37]/40 text-[#1A1814] text-sm focus:outline-none focus:border-[#B8860B] shadow-sm"
+                          className="w-full pl-12 pr-4 py-4 rounded-xl glass-input border border-[#D4AF37]/40 text-[#1A1814] text-sm focus:outline-none focus:border-[#B8860B] shadow-sm"
                           required
                         />
                       </div>
@@ -228,10 +227,10 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                               setFormData({ ...formData, guests: g });
                               handleNext();
                             }}
-                            className={`p-4 rounded-xl text-xs tracking-widest font-bold uppercase border transition-all ${
+                            className={`p-4 rounded-2xl text-xs tracking-widest font-bold uppercase border transition-all ${
                               formData.guests === g
-                                ? 'bg-[#D4AF37] text-white border-[#D4AF37] shadow-sm'
-                                : 'bg-white text-[#1A1814] border-[#D4AF37]/30 hover:border-[#B8860B]'
+                                ? 'bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white border-[#D4AF37] shadow-md'
+                                : 'glass-panel text-[#1A1814] border-[#D4AF37]/30 hover:border-[#B8860B]'
                             }`}
                           >
                             {g}
@@ -262,7 +261,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                             placeholder="Your Name *"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-[#D4AF37]/40 text-[#1A1814] text-xs focus:outline-none focus:border-[#B8860B] shadow-sm"
+                            className="w-full pl-11 pr-4 py-3.5 rounded-xl glass-input border border-[#D4AF37]/40 text-[#1A1814] text-xs focus:outline-none focus:border-[#B8860B] shadow-sm"
                             required
                           />
                         </div>
@@ -274,7 +273,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                             placeholder="Phone Number (+91) *"
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            className="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-[#D4AF37]/40 text-[#1A1814] text-xs focus:outline-none focus:border-[#B8860B] shadow-sm"
+                            className="w-full pl-11 pr-4 py-3.5 rounded-xl glass-input border border-[#D4AF37]/40 text-[#1A1814] text-xs focus:outline-none focus:border-[#B8860B] shadow-sm"
                             required
                           />
                         </div>
@@ -287,7 +286,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                           placeholder="Email Address *"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-[#D4AF37]/40 text-[#1A1814] text-xs focus:outline-none focus:border-[#B8860B] shadow-sm"
+                          className="w-full pl-11 pr-4 py-3.5 rounded-xl glass-input border border-[#D4AF37]/40 text-[#1A1814] text-xs focus:outline-none focus:border-[#B8860B] shadow-sm"
                           required
                         />
                       </div>
@@ -299,7 +298,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                           rows={3}
                           value={formData.message}
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-[#D4AF37]/40 text-[#1A1814] text-xs focus:outline-none focus:border-[#B8860B] shadow-sm"
+                          className="w-full pl-11 pr-4 py-3.5 rounded-xl glass-input border border-[#D4AF37]/40 text-[#1A1814] text-xs focus:outline-none focus:border-[#B8860B] shadow-sm"
                         />
                       </div>
                     </motion.div>
@@ -312,7 +311,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     <button
                       type="button"
                       onClick={handlePrev}
-                      className="px-5 py-2.5 rounded-full border border-[#D4AF37] text-[#B8860B] text-xs tracking-widest font-bold uppercase flex items-center space-x-2 bg-white"
+                      className="px-5 py-2.5 rounded-full glass-panel border border-[#D4AF37]/60 text-[#B8860B] text-xs tracking-widest font-bold uppercase flex items-center space-x-2 hover:bg-white"
                     >
                       <ArrowLeft className="w-4 h-4" />
                       <span>BACK</span>
@@ -325,7 +324,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="px-6 py-3 rounded-full bg-[#D4AF37] text-white text-xs tracking-[0.2em] font-bold uppercase flex items-center space-x-2 hover:bg-[#B8860B] transition-colors shadow-sm"
+                      className="px-6 py-3 rounded-full bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white text-xs tracking-[0.2em] font-bold uppercase flex items-center space-x-2 hover:shadow-[0_8px_25px_rgba(212,175,55,0.35)] transition-all shadow-md border border-[#D4AF37]/50"
                     >
                       <span>NEXT STEP</span>
                       <ArrowRight className="w-4 h-4" />
@@ -333,7 +332,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   ) : (
                     <button
                       type="submit"
-                      className="px-8 py-4 rounded-full bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] text-white text-xs tracking-[0.25em] font-bold uppercase shadow-[0_10px_25px_rgba(184,134,11,0.3)]"
+                      className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] text-white text-xs tracking-[0.25em] font-bold uppercase shadow-[0_10px_30px_rgba(184,134,11,0.35)] border border-[#D4AF37]/50 hover:scale-105 transition-all"
                     >
                       SEND ENQUIRY
                     </button>

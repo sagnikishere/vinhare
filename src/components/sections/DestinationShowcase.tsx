@@ -1,4 +1,3 @@
-'use me';
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
@@ -67,24 +66,25 @@ export const DestinationShowcase: React.FC<DestinationShowcaseProps> = ({
               key={prop.id}
               onClick={() => onSelectProperty(prop)}
               data-cursor="VIEW"
-              className="flex-none w-[80vw] sm:w-[65vw] lg:w-[50vw] aspect-[16/10] relative rounded-3xl overflow-hidden glass-panel-gold border-2 border-[#D4AF37]/40 group cursor-pointer shadow-[0_20px_50px_rgba(184,134,11,0.15)]"
+              className="flex-none w-[80vw] sm:w-[65vw] lg:w-[50vw] aspect-[16/10] relative rounded-3xl overflow-hidden glass-dark border-2 border-[#D4AF37]/45 group cursor-pointer shadow-[0_20px_50px_rgba(184,134,11,0.2)]"
             >
               <img
                 src={prop.image}
                 alt={prop.name}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1814] via-[#1A1814]/40 to-transparent opacity-85" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1814] via-[#1A1814]/30 to-transparent opacity-85" />
 
-              <div className="absolute top-8 left-8">
-                <span className="px-4 py-1.5 rounded-full text-xs tracking-[0.25em] font-bold text-[#F3E5AB] bg-[#1A1814]/85 border border-[#D4AF37]/40 uppercase backdrop-blur-md">
+              <div className="absolute top-6 left-6">
+                <span className="glass-pill-dark px-4 py-1.5 rounded-full text-xs tracking-[0.25em] font-bold text-[#F3E5AB] uppercase border border-[#D4AF37]/40 shadow-md">
                   {prop.type}
                 </span>
               </div>
 
-              <div className="absolute bottom-8 left-8 right-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+              {/* Floating Glass Tray at bottom */}
+              <div className="absolute bottom-6 left-6 right-6 p-5 sm:p-6 rounded-2xl glass-dark border border-white/15 backdrop-blur-xl flex flex-col md:flex-row md:items-end justify-between gap-4 shadow-2xl">
                 <div className="max-w-xl">
-                  <h3 className="font-serif-luxury text-3xl sm:text-5xl font-light text-white group-hover:text-[#F3E5AB] transition-colors">
+                  <h3 className="font-serif-luxury text-2xl sm:text-4xl font-light text-white group-hover:text-[#F3E5AB] transition-colors">
                     {prop.name}
                   </h3>
                   <p className="text-xs sm:text-sm text-[#EADCC9]/90 font-serif italic mt-1">
@@ -92,7 +92,7 @@ export const DestinationShowcase: React.FC<DestinationShowcaseProps> = ({
                   </p>
                 </div>
 
-                <button className="px-6 py-3 rounded-full bg-[#D4AF37] text-white text-xs tracking-[0.2em] font-bold uppercase flex items-center space-x-2 hover:bg-[#B8860B] transition-colors flex-shrink-0 shadow-md">
+                <button className="px-6 py-3 rounded-full bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white text-xs tracking-[0.2em] font-bold uppercase flex items-center space-x-2 hover:shadow-[0_6px_20px_rgba(212,175,55,0.4)] transition-all flex-shrink-0 shadow-md border border-[#D4AF37]/50">
                   <span>EXPLORE</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>

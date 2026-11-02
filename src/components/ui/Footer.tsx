@@ -1,10 +1,10 @@
-'use me';
 'use client';
 
 import React from 'react';
 import { BRAND_INFO } from '../../data/vinhareData';
 import { Phone, MapPin, Mail, ArrowUpRight, Share2, Globe } from 'lucide-react';
 import { PropertyItem } from '../../types';
+import { useSmoothScroll } from '../providers/SmoothScrollProvider';
 
 interface FooterProps {
   onOpenEnquiry: (option?: string) => void;
@@ -12,6 +12,16 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry, onSelectPropertyBySlug }) => {
+  const { scrollTo } = useSmoothScroll();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    e.preventDefault();
+    if (target === '#' || target === '#home') {
+      scrollTo(0, { duration: 1.4 });
+    } else {
+      scrollTo(target, { offset: -70, duration: 1.4 });
+    }
+  };
   return (
     <footer className="relative bg-[#FAF7F2] text-[#1A1814] pt-24 pb-12 border-t border-[#D4AF37]/30 overflow-hidden">
       {/* Subtle Background Radial Glow */}
@@ -45,7 +55,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry, onSelectPropertyB
                 href={BRAND_INFO.socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full border border-[#D4AF37] bg-white text-[#B8860B] hover:bg-[#D4AF37] hover:text-white transition-colors shadow-sm"
+                className="p-3 rounded-full glass-pill text-[#B8860B] hover:bg-[#D4AF37] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm"
                 aria-label="Vinhare Instagram"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -56,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry, onSelectPropertyB
                 href={BRAND_INFO.socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full border border-[#D4AF37] bg-white text-[#B8860B] hover:bg-[#D4AF37] hover:text-white transition-colors shadow-sm"
+                className="p-3 rounded-full glass-pill text-[#B8860B] hover:bg-[#D4AF37] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm"
                 aria-label="Vinhare Facebook"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -73,17 +83,20 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry, onSelectPropertyB
             </h4>
             <ul className="space-y-2.5 text-xs text-[#443B2F] font-medium">
               <li>
-                <a href="#destinations" className="hover:text-[#B8860B] transition-colors">
+                <a href="#destinations" onClick={(e) => handleNavClick(e, '#destinations')} className="hover:text-[#B8860B] transition-colors inline-flex items-center gap-1.5 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/40 group-hover:bg-[#B8860B] transition-colors" />
                   Shiv Garden Resort
                 </a>
               </li>
               <li>
-                <a href="#destinations" className="hover:text-[#B8860B] transition-colors">
+                <a href="#destinations" onClick={(e) => handleNavClick(e, '#destinations')} className="hover:text-[#B8860B] transition-colors inline-flex items-center gap-1.5 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/40 group-hover:bg-[#B8860B] transition-colors" />
                   J.P. Resort
                 </a>
               </li>
               <li>
-                <a href="#destinations" className="hover:text-[#B8860B] transition-colors">
+                <a href="#destinations" onClick={(e) => handleNavClick(e, '#destinations')} className="hover:text-[#B8860B] transition-colors inline-flex items-center gap-1.5 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/40 group-hover:bg-[#B8860B] transition-colors" />
                   Resort Raj
                 </a>
               </li>
@@ -94,7 +107,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry, onSelectPropertyB
             </h4>
             <ul className="space-y-2.5 text-xs text-[#443B2F] font-medium">
               <li>
-                <a href="#weddings" className="hover:text-[#B8860B] transition-colors">
+                <a href="#weddings" onClick={(e) => handleNavClick(e, '#weddings')} className="hover:text-[#B8860B] transition-colors inline-flex items-center gap-1.5 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/40 group-hover:bg-[#B8860B] transition-colors" />
                   Mithila Marriage Services
                 </a>
               </li>
@@ -107,48 +121,56 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquiry, onSelectPropertyB
               NAVIGATION
             </h4>
             <ul className="space-y-2 text-xs text-[#443B2F] font-medium">
-              <li><a href="#" className="hover:text-[#B8860B]">Home</a></li>
-              <li><a href="#destinations" className="hover:text-[#B8860B]">Destinations</a></li>
-              <li><a href="#weddings" className="hover:text-[#B8860B]">Weddings</a></li>
-              <li><a href="#experiences" className="hover:text-[#B8860B]">Experiences</a></li>
-              <li><a href="#gallery" className="hover:text-[#B8860B]">Gallery</a></li>
-              <li><a href="#about" className="hover:text-[#B8860B]">About</a></li>
-              <li><a href="#network" className="hover:text-[#B8860B]">Network</a></li>
+              <li><a href="#" onClick={(e) => handleNavClick(e, '#')} className="hover:text-[#B8860B] transition-colors">Home</a></li>
+              <li><a href="#destinations" onClick={(e) => handleNavClick(e, '#destinations')} className="hover:text-[#B8860B] transition-colors">Destinations</a></li>
+              <li><a href="#weddings" onClick={(e) => handleNavClick(e, '#weddings')} className="hover:text-[#B8860B] transition-colors">Weddings</a></li>
+              <li><a href="#experiences" onClick={(e) => handleNavClick(e, '#experiences')} className="hover:text-[#B8860B] transition-colors">Experiences</a></li>
+              <li><a href="#gallery" onClick={(e) => handleNavClick(e, '#gallery')} className="hover:text-[#B8860B] transition-colors">Gallery</a></li>
+              <li><a href="#about" onClick={(e) => handleNavClick(e, '#about')} className="hover:text-[#B8860B] transition-colors">About</a></li>
+              <li><a href="#network" onClick={(e) => handleNavClick(e, '#network')} className="hover:text-[#B8860B] transition-colors">Network</a></li>
             </ul>
           </div>
 
           {/* Contact Col */}
-          <div className="lg:col-span-3 flex flex-col space-y-4">
-            <h4 className="text-xs tracking-[0.3em] font-bold text-[#B8860B] uppercase">
-              CONCIERGE CONTACT
-            </h4>
+          <div className="lg:col-span-3 flex flex-col">
+            <div className="glass-panel rounded-2xl p-6 border border-[#D4AF37]/40 shadow-xl flex flex-col space-y-4">
+              <h4 className="text-xs tracking-[0.3em] font-bold text-[#B8860B] uppercase">
+                CONCIERGE CONTACT
+              </h4>
 
-            <div className="space-y-3 text-xs text-[#1A1814]">
-              <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-[#B8860B] flex-shrink-0" />
-                <a href={`tel:${BRAND_INFO.phone}`} className="hover:text-[#B8860B] font-bold">
-                  {BRAND_INFO.phoneFormatted}
-                </a>
+              <div className="space-y-3 text-xs text-[#1A1814]">
+                <div className="flex items-center space-x-3">
+                  <div className="p-1.5 rounded-lg glass-pill text-[#B8860B]">
+                    <Phone className="w-3.5 h-3.5" />
+                  </div>
+                  <a href={`tel:${BRAND_INFO.phone}`} className="hover:text-[#B8860B] font-bold tracking-wider transition-colors">
+                    {BRAND_INFO.phoneFormatted}
+                  </a>
+                </div>
+
+                <div className="flex items-center space-x-3">
+                  <div className="p-1.5 rounded-lg glass-pill text-[#B8860B]">
+                    <MapPin className="w-3.5 h-3.5" />
+                  </div>
+                  <span className="font-medium text-[#443B2F]">{BRAND_INFO.location}</span>
+                </div>
+
+                <div className="flex items-center space-x-3">
+                  <div className="p-1.5 rounded-lg glass-pill text-[#B8860B]">
+                    <Mail className="w-3.5 h-3.5" />
+                  </div>
+                  <span className="font-medium text-[#443B2F]">{BRAND_INFO.email}</span>
+                </div>
               </div>
 
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-[#B8860B] flex-shrink-0" />
-                <span className="font-medium">{BRAND_INFO.location}</span>
+              <div className="pt-2">
+                <button
+                  onClick={() => onOpenEnquiry()}
+                  className="w-full py-3.5 bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#B8860B] text-white font-bold text-xs tracking-[0.2em] uppercase rounded-xl hover:shadow-[0_8px_25px_rgba(212,175,55,0.4)] transition-all transform active:scale-95 cursor-pointer"
+                >
+                  PLAN AN EVENT
+                </button>
               </div>
-
-              <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-[#B8860B] flex-shrink-0" />
-                <span className="font-medium">{BRAND_INFO.email}</span>
-              </div>
-            </div>
-
-            <div className="pt-4">
-              <button
-                onClick={() => onOpenEnquiry()}
-                className="w-full py-3 bg-[#D4AF37] text-white font-bold text-xs tracking-[0.2em] uppercase rounded-full hover:bg-[#B8860B] transition-colors shadow-sm"
-              >
-                PLAN AN EVENT
-              </button>
             </div>
           </div>
         </div>

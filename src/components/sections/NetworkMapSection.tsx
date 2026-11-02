@@ -1,4 +1,3 @@
-'use me';
 'use client';
 
 import React, { useState } from 'react';
@@ -50,8 +49,8 @@ export const NetworkMapSection: React.FC<NetworkMapSectionProps> = ({
 
         {/* Interactive Network Map Visualization Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Map Graphic Box */}
-          <div className="lg:col-span-7 h-[420px] md:h-[500px] relative rounded-3xl overflow-hidden glass-panel-gold border-2 border-[#D4AF37]/40 shadow-[0_20px_50px_rgba(184,134,11,0.12)] p-6 flex flex-col justify-between">
+          {/* Map Graphic Box in Glassmorphism */}
+          <div className="lg:col-span-7 h-[420px] md:h-[500px] relative rounded-3xl overflow-hidden glass-panel-gold border-2 border-[#D4AF37]/45 shadow-[0_25px_60px_rgba(184,134,11,0.16)] p-6 flex flex-col justify-between">
             {/* Background Grid Pattern */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#EAE4D9_1px,transparent_1px),linear-gradient(to_bottom,#EAE4D9_1px,transparent_1px)] bg-[size:32px_32px] opacity-60 pointer-events-none" />
 
@@ -60,7 +59,7 @@ export const NetworkMapSection: React.FC<NetworkMapSectionProps> = ({
 
             {/* Region Title Overlay */}
             <div className="relative z-10 flex items-center justify-between">
-              <span className="px-3 py-1 rounded-full border border-[#D4AF37]/50 bg-white/90 text-[10px] tracking-widest text-[#B8860B] font-bold uppercase shadow-sm">
+              <span className="glass-pill px-3.5 py-1.5 rounded-full text-[10px] tracking-widest text-[#B8860B] font-bold uppercase shadow-sm">
                 BIHAR, INDIA REGIONAL MAP
               </span>
               <Navigation className="w-4 h-4 text-[#B8860B]" />
@@ -82,8 +81,8 @@ export const NetworkMapSection: React.FC<NetworkMapSectionProps> = ({
                     <div
                       className={`relative flex items-center justify-center p-3 rounded-full transition-all duration-300 ${
                         isSelected
-                          ? 'bg-[#D4AF37] text-white shadow-[0_0_25px_#D4AF37] scale-125'
-                          : 'bg-white/95 text-[#B8860B] border border-[#D4AF37]/60 hover:scale-110 shadow-sm'
+                          ? 'bg-[#D4AF37] text-white shadow-[0_0_25px_#D4AF37] scale-125 border-2 border-white'
+                          : 'glass-panel text-[#B8860B] border border-[#D4AF37]/60 hover:scale-110 shadow-md'
                       }`}
                     >
                       <MapPin className="w-5 h-5" />
@@ -91,7 +90,7 @@ export const NetworkMapSection: React.FC<NetworkMapSectionProps> = ({
 
                     {/* Tooltip Badge */}
                     <div
-                      className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 rounded bg-[#1A1814]/90 border border-[#D4AF37]/40 text-[10px] tracking-widest text-[#F3E5AB] uppercase whitespace-nowrap transition-opacity duration-200 ${
+                      className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 rounded-full glass-pill-dark border border-[#D4AF37]/40 text-[10px] tracking-widest text-[#F3E5AB] uppercase whitespace-nowrap transition-opacity duration-200 shadow-lg ${
                         isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                       }`}
                     >
@@ -102,7 +101,7 @@ export const NetworkMapSection: React.FC<NetworkMapSectionProps> = ({
               })}
             </div>
 
-            <div className="relative z-10 text-[10px] text-[#786C5E] tracking-widest font-bold uppercase">
+            <div className="relative z-10 text-[10px] text-[#786C5E] tracking-widest font-bold uppercase glass-pill px-3 py-1 rounded-full self-start">
               SELECT LOCATION PIN TO INSPECT DESTINATION
             </div>
           </div>
@@ -116,7 +115,7 @@ export const NetworkMapSection: React.FC<NetworkMapSectionProps> = ({
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ duration: 0.4 }}
-                className="rounded-3xl glass-panel-gold border-2 border-[#D4AF37]/40 p-6 shadow-[0_20px_50px_rgba(184,134,11,0.12)] flex flex-col space-y-4"
+                className="rounded-3xl glass-panel-gold border-2 border-[#D4AF37]/45 p-6 shadow-[0_25px_60px_rgba(184,134,11,0.18)] flex flex-col space-y-4"
               >
                 <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-sm">
                   <img
@@ -127,7 +126,7 @@ export const NetworkMapSection: React.FC<NetworkMapSectionProps> = ({
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1814] via-transparent to-transparent opacity-80" />
 
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full text-[10px] tracking-widest font-bold text-[#F3E5AB] bg-[#1A1814]/85 border border-[#D4AF37]/40 uppercase">
+                    <span className="glass-pill-dark px-3 py-1 rounded-full text-[10px] tracking-widest font-bold text-[#F3E5AB] border border-[#D4AF37]/40 uppercase shadow-md">
                       {selectedLoc.type}
                     </span>
                   </div>
@@ -148,7 +147,7 @@ export const NetworkMapSection: React.FC<NetworkMapSectionProps> = ({
                 <div className="pt-2">
                   <button
                     onClick={() => handleExplore(selectedLoc.property)}
-                    className="w-full py-3.5 bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white font-semibold text-xs tracking-[0.2em] uppercase rounded-full hover:shadow-[0_10px_25px_rgba(184,134,11,0.3)] transition-all flex items-center justify-center space-x-2"
+                    className="w-full py-3.5 bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white font-semibold text-xs tracking-[0.2em] uppercase rounded-full hover:shadow-[0_10px_25px_rgba(184,134,11,0.35)] transition-all flex items-center justify-center space-x-2 border border-[#D4AF37]/50"
                   >
                     <span>EXPLORE PROPERTY</span>
                     <ArrowRight className="w-4 h-4" />

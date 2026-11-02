@@ -77,9 +77,9 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             </motion.p>
           </div>
 
-          {/* Minimal Loading Bar & Progress */}
-          <div className="absolute bottom-16 flex flex-col items-center gap-3 w-48">
-            <div className="h-[3px] w-full bg-[#EAE4D9] overflow-hidden rounded-full">
+          {/* Minimal Loading Bar & Progress in Glass Pill */}
+          <div className="absolute bottom-16 flex flex-col items-center gap-3 w-56 glass-pill px-5 py-3.5 rounded-2xl shadow-lg border border-[#D4AF37]/30">
+            <div className="h-[3px] w-full bg-[#EAE4D9]/60 overflow-hidden rounded-full">
               <motion.div
                 className="h-full bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059]"
                 style={{ width: `${Math.min(progress, 100)}%` }}
@@ -88,7 +88,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             </div>
             <div className="flex justify-between w-full text-[10px] tracking-widest text-[#786C5E] font-bold">
               <span>BIHAR, INDIA</span>
-              <span>{Math.min(progress, 100)}%</span>
+              <span className="text-[#B8860B] font-mono">{Math.min(progress, 100)}%</span>
             </div>
           </div>
         </motion.div>

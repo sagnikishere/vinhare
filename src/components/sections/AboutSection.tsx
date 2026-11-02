@@ -1,4 +1,3 @@
-'use me';
 'use client';
 
 import React from 'react';
@@ -30,14 +29,14 @@ export const AboutSection: React.FC = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A1814]/90 via-transparent to-transparent opacity-80" />
 
-            <div className="absolute bottom-8 left-8 right-8 p-6 rounded-2xl bg-white/90 backdrop-blur-md border border-[#D4AF37]/40 shadow-sm">
-              <span className="text-[10px] tracking-[0.3em] font-bold text-[#B8860B] uppercase">
+            <div className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl glass-dark border border-white/20 backdrop-blur-xl shadow-2xl">
+              <span className="text-[10px] tracking-[0.3em] font-bold text-[#D4AF37] uppercase">
                 PARENT BRAND
               </span>
-              <h4 className="font-serif-luxury text-2xl text-[#1A1814] font-light mt-1">
+              <h4 className="font-serif-luxury text-2xl text-white font-light mt-1">
                 {BRAND_INFO.parentName}
               </h4>
-              <p className="text-xs text-[#52483B] mt-1 font-light">
+              <p className="text-xs text-[#EADCC9]/90 mt-1 font-light">
                 {BRAND_INFO.taglineSecondary}
               </p>
             </div>
@@ -64,45 +63,47 @@ export const AboutSection: React.FC = () => {
               </h2>
             </div>
 
-            <p className="text-base sm:text-lg text-[#2C261E] font-serif italic font-light leading-relaxed">
-              "Vinhare is the parent hospitality brand unifying premier resorts, event spaces, and wedding services across Bihar, India."
-            </p>
+            <div className="p-5 rounded-2xl glass-panel-gold border border-[#D4AF37]/35 shadow-sm">
+              <p className="text-base sm:text-lg text-[#2C261E] font-serif italic font-light leading-relaxed">
+                "Vinhare is the parent hospitality brand unifying premier resorts, event spaces, and wedding services across Bihar, India."
+              </p>
+            </div>
 
             <p className="text-xs sm:text-sm text-[#52483B] font-light leading-relaxed">
               Under the Vinhare umbrella, guests discover Shiv Garden Resort, J.P. Resort, Resort Raj, and Mithila Marriage Services. Each property is crafted to deliver exceptional guest comfort, royal architecture, and impeccable event management without compromise.
             </p>
 
-            {/* Verified Facts Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-[#D4AF37]/30">
-              <div className="flex items-start space-x-3">
+            {/* Verified Facts Grid in Glass Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="flex items-start space-x-3 p-4 rounded-2xl glass-panel border border-[#D4AF37]/25 shadow-sm glass-card-interactive">
                 <CheckCircle className="w-5 h-5 text-[#B8860B] flex-shrink-0 mt-0.5" />
                 <div>
                   <h5 className="text-xs font-bold tracking-wider text-[#1A1814] uppercase">
                     4 ECOSYSTEM PROPERTIES
                   </h5>
-                  <p className="text-[11px] text-[#786C5E]">
+                  <p className="text-[11px] text-[#786C5E] mt-0.5">
                     Shiv Garden, J.P., Resort Raj & Mithila Marriage
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3">
+              <div className="flex items-start space-x-3 p-4 rounded-2xl glass-panel border border-[#D4AF37]/25 shadow-sm glass-card-interactive">
                 <CheckCircle className="w-5 h-5 text-[#B8860B] flex-shrink-0 mt-0.5" />
                 <div>
                   <h5 className="text-xs font-bold tracking-wider text-[#1A1814] uppercase">
                     BIHAR CENTRAL HUB
                   </h5>
-                  <p className="text-[11px] text-[#786C5E]">
+                  <p className="text-[11px] text-[#786C5E] mt-0.5">
                     {BRAND_INFO.location}
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Contact Hotline */}
-            <div className="p-6 rounded-2xl glass-panel-gold border-2 border-[#D4AF37]/40 flex items-center justify-between mt-4 shadow-sm">
+            {/* Contact Hotline in Glass Card */}
+            <div className="p-6 rounded-2xl glass-panel-gold border-2 border-[#D4AF37]/45 flex items-center justify-between mt-2 shadow-md">
               <div className="flex items-center space-x-4">
-                <div className="p-3 rounded-full bg-[#D4AF37]/20 text-[#B8860B]">
+                <div className="p-3 rounded-full glass-pill border border-[#D4AF37]/50 text-[#B8860B] shadow-sm">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>

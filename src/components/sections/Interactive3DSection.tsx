@@ -1,4 +1,3 @@
-'use me';
 'use client';
 
 import React, { Suspense, useState } from 'react';
@@ -42,7 +41,7 @@ export const Interactive3DSection: React.FC = () => {
         {/* 3D Canvas & Hotspot Detail Panel Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left / Main 3D Canvas Container */}
-          <div className="lg:col-span-7 h-[450px] md:h-[550px] relative rounded-3xl overflow-hidden glass-panel-gold border-2 border-[#D4AF37]/40 shadow-[0_20px_50px_rgba(184,134,11,0.12)]">
+          <div className="lg:col-span-7 h-[450px] md:h-[550px] relative rounded-3xl overflow-hidden glass-panel-gold border-2 border-[#D4AF37]/45 shadow-[0_25px_60px_rgba(184,134,11,0.16)]">
             <Canvas
               camera={{ position: [0, 4, 10], fov: 45 }}
               dpr={[1, 2]}
@@ -57,7 +56,7 @@ export const Interactive3DSection: React.FC = () => {
             </Canvas>
 
             {/* Helper Drag Overlay Tag */}
-            <div className="absolute bottom-4 left-4 flex items-center space-x-2 px-3 py-1.5 rounded-full bg-white/90 border border-[#D4AF37]/50 text-[10px] tracking-widest text-[#B8860B] font-bold uppercase pointer-events-none shadow-sm">
+            <div className="absolute bottom-4 left-4 flex items-center space-x-2 px-3.5 py-1.5 rounded-full glass-pill border border-[#D4AF37]/50 text-[10px] tracking-widest text-[#B8860B] font-bold uppercase pointer-events-none shadow-md">
               <RotateCcw className="w-3.5 h-3.5 text-[#B8860B]" />
               <span>3D INTERACTIVE • ROTATE TO EXPLORE</span>
             </div>
@@ -73,13 +72,13 @@ export const Interactive3DSection: React.FC = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="rounded-3xl glass-panel-gold border-2 border-[#D4AF37]/40 p-8 shadow-[0_20px_50px_rgba(184,134,11,0.12)]"
+                  className="rounded-3xl glass-panel-gold border-2 border-[#D4AF37]/45 p-8 shadow-[0_25px_60px_rgba(184,134,11,0.18)]"
                 >
                   <div className="flex items-center justify-between pb-4 border-b border-[#D4AF37]/30">
                     <span className="text-[10px] tracking-[0.3em] font-bold text-[#B8860B] uppercase">
                       HOTSPOT INFO
                     </span>
-                    <span className="text-xs text-[#8C8275] font-mono">
+                    <span className="text-xs text-[#8C8275] font-mono glass-pill px-2.5 py-0.5 rounded-full">
                       {selectedHotspot.id.toUpperCase()}
                     </span>
                   </div>
@@ -96,10 +95,10 @@ export const Interactive3DSection: React.FC = () => {
                     {selectedHotspot.description}
                   </p>
 
-                  {/* Highlights Bullet List */}
-                  <div className="space-y-2.5 pt-2">
+                  {/* Highlights Bullet List in Glass Chips */}
+                  <div className="space-y-2 pt-2">
                     {selectedHotspot.details.map((detail, idx) => (
-                      <div key={idx} className="flex items-center space-x-2.5 text-xs text-[#1A1814] font-medium">
+                      <div key={idx} className="flex items-center space-x-2.5 p-2.5 rounded-xl glass-panel border border-[#D4AF37]/20 text-xs text-[#1A1814] font-medium shadow-sm">
                         <CheckCircle2 className="w-4 h-4 text-[#B8860B] flex-shrink-0" />
                         <span>{detail}</span>
                       </div>
@@ -107,15 +106,15 @@ export const Interactive3DSection: React.FC = () => {
                   </div>
 
                   {/* Quick Hotspot Tab Selectors */}
-                  <div className="grid grid-cols-4 gap-2 pt-6 mt-6 border-t border-[#D4AF37]/30">
+                  <div className="grid grid-cols-4 gap-2 pt-5 mt-5 border-t border-[#D4AF37]/30">
                     {HOTSPOTS_DATA.map((spot) => (
                       <button
                         key={spot.id}
                         onClick={() => setSelectedHotspot(spot)}
-                        className={`py-2 text-[10px] tracking-widest font-bold uppercase rounded transition-all ${
+                        className={`py-2 text-[10px] tracking-widest font-bold uppercase rounded-xl transition-all ${
                           selectedHotspot.id === spot.id
-                            ? 'bg-[#D4AF37] text-white shadow-sm'
-                            : 'bg-white/80 text-[#786C5E] border border-[#D4AF37]/20 hover:text-[#B8860B]'
+                            ? 'bg-[#D4AF37] text-white shadow-md border border-[#D4AF37]'
+                            : 'glass-panel text-[#786C5E] border border-[#D4AF37]/25 hover:text-[#B8860B] hover:border-[#D4AF37]/50'
                         }`}
                       >
                         {spot.id}

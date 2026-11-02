@@ -121,7 +121,9 @@ export const ScrollVideoHero: React.FC<ScrollVideoHeroProps> = ({
     },
   ];
 
-  // High performance scroll listener with passive event handling
+  const lastProgressRef = useRef<number>(0);
+
+  // High performance scroll listener with passive event handling and throttling
   useEffect(() => {
     let animationFrameId: number;
 
@@ -133,30 +135,24 @@ export const ScrollVideoHero: React.FC<ScrollVideoHeroProps> = ({
 
       const currentY = -rect.top;
       const progress = Math.min(Math.max(currentY / totalHeight, 0), 1);
-      setScrollProgress(progress);
 
-      // Trigger 1st White Flash on entering Mithila Marriage Services (around 0.18 - 0.23 progress)
-      if (progress >= 0.18 && progress <= 0.25) {
-        if (!hasPassedFlash) {
-          setIsFlashActive(true);
-          setHasPassedFlash(true);
-          setTimeout(() => setIsFlashActive(false), 700);
+      // Only re-render when progress has meaningfully moved (improves 60/120fps smoothness)
+      if (Math.abs(progress - lastProgressRef.current) >= 0.004) {
+        lastProgressRef.current = progress;
+        setScrollProgress(progress);
+
+        // Determine scene cleanly based on scroll percentage
+        if (progress < 0.20) {
+          setCurrentScene(0);
+        } else if (progress < 0.40) {
+          setCurrentScene(1);
+        } else if (progress < 0.60) {
+          setCurrentScene(2);
+        } else if (progress < 0.80) {
+          setCurrentScene(3);
+        } else {
+          setCurrentScene(4);
         }
-      } else if (progress < 0.14) {
-        setHasPassedFlash(false);
-      }
-
-      // Determine scene cleanly based on scroll percentage
-      if (progress < 0.20) {
-        setCurrentScene(0);
-      } else if (progress < 0.40) {
-        setCurrentScene(1);
-      } else if (progress < 0.60) {
-        setCurrentScene(2);
-      } else if (progress < 0.80) {
-        setCurrentScene(3);
-      } else {
-        setCurrentScene(4);
       }
     };
 
@@ -172,7 +168,7 @@ export const ScrollVideoHero: React.FC<ScrollVideoHeroProps> = ({
       window.removeEventListener('scroll', handleScroll);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [hasPassedFlash]);
+  }, []);
 
   const activeScene = scenesData[currentScene];
 
@@ -192,14 +188,18 @@ export const ScrollVideoHero: React.FC<ScrollVideoHeroProps> = ({
     if (containerRef.current) {
       const totalHeight = containerRef.current.offsetHeight - window.innerHeight;
       const targetY = containerRef.current.offsetTop + (index / 4) * totalHeight;
-      window.scrollTo({ top: targetY, behavior: 'smooth' });
+      if (typeof window !== 'undefined' && (window as unknown as { __lenis?: { scrollTo: (y: number, opts: unknown) => void } }).__lenis) {
+        (window as unknown as { __lenis?: { scrollTo: (y: number, opts: unknown) => void } }).__lenis?.scrollTo(targetY, { duration: 1.4 });
+      } else {
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
+      }
     }
   };
 
   return (
     <div ref={containerRef} className="relative h-[380vh] md:h-[450vh] w-full bg-[#0D0C0A] text-white">
       {/* -------------------------------------------------------------------
-          WHITE FLASH TRANSITION OVERLAY
+          SOOTHING GOLDEN AMBIENT VEIL (SMOOTH & CALMING)
          ------------------------------------------------------------------- */}
       <AnimatePresence>
         {isFlashActive && (
@@ -207,20 +207,20 @@ export const ScrollVideoHero: React.FC<ScrollVideoHeroProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="fixed inset-0 z-50 bg-white pointer-events-none flex flex-col items-center justify-center p-6 text-center"
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            className="fixed inset-0 z-50 bg-[#14120E]/90 backdrop-blur-xl pointer-events-none flex flex-col items-center justify-center p-6 text-center"
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1.05, opacity: 1 }}
-              exit={{ scale: 1.2, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 1.05, opacity: 0 }}
               transition={{ duration: 0.4 }}
             >
-              <Sparkles className="w-14 h-14 text-[#D4AF37] mx-auto mb-3 animate-spin-slow" />
-              <h3 className="font-serif-luxury text-3xl sm:text-5xl text-[#1A1814] tracking-[0.2em] uppercase font-light">
+              <Sparkles className="w-12 h-12 text-[#D4AF37] mx-auto mb-3 animate-pulse-glow" />
+              <h3 className="font-serif-luxury text-3xl sm:text-5xl text-[#FDFBF7] tracking-[0.2em] uppercase font-light">
                 MITHILA MARRIAGE SERVICES
               </h3>
-              <p className="text-xs sm:text-sm tracking-[0.4em] text-[#B8860B] uppercase font-bold mt-2">
+              <p className="text-xs sm:text-sm tracking-[0.4em] text-[#D4AF37] uppercase font-semibold mt-2">
                 UNVEILING VINHARE LUXURY DESTINATIONS
               </p>
             </motion.div>
@@ -272,16 +272,16 @@ export const ScrollVideoHero: React.FC<ScrollVideoHeroProps> = ({
             TOP BAR: BRAND BADGE & MEDIA CONTROLS
            ------------------------------------------------------------------- */}
         <div className="relative z-10 w-full max-w-7xl mx-auto flex items-center justify-between pt-10 sm:pt-14">
-          <div className="flex items-center space-x-2 text-[10px] sm:text-[11px] font-semibold text-[#F3E5AB] tracking-[0.25em] uppercase">
+          <div className="glass-pill-dark flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-semibold text-[#F3E5AB] tracking-[0.25em] uppercase border border-[#D4AF37]/35 shadow-lg">
             <Sparkles className="w-4 h-4 text-[#D4AF37]" />
             <span>VINHARE LUXURY COLLECTION</span>
           </div>
 
-          {/* Controls: Mute Toggle, Play/Pause & Scroll Progress */}
+          {/* Controls: Mute Toggle, Play/Pause & Scroll Progress in Glass Pills */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             <button
               onClick={togglePlayPause}
-              className="p-2 sm:p-2.5 rounded-full border border-white/20 bg-black/40 backdrop-blur-xl text-[#F3E5AB] hover:text-white hover:border-[#D4AF37] transition-all"
+              className="p-2 sm:p-2.5 rounded-full glass-pill-dark text-[#F3E5AB] hover:text-white hover:border-[#D4AF37] hover:scale-105 transition-all shadow-md"
               title={isPlaying ? 'Pause Video' : 'Play Video'}
             >
               {isPlaying ? <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
@@ -289,13 +289,13 @@ export const ScrollVideoHero: React.FC<ScrollVideoHeroProps> = ({
 
             <button
               onClick={() => setIsMuted(!isMuted)}
-              className="p-2 sm:p-2.5 rounded-full border border-white/20 bg-black/40 backdrop-blur-xl text-[#F3E5AB] hover:text-white hover:border-[#D4AF37] transition-all"
+              className="p-2 sm:p-2.5 rounded-full glass-pill-dark text-[#F3E5AB] hover:text-white hover:border-[#D4AF37] hover:scale-105 transition-all shadow-md"
               title={isMuted ? 'Unmute Sound' : 'Mute Sound'}
             >
               {isMuted ? <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
             </button>
 
-            <div className="hidden sm:flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-black/40 backdrop-blur-xl text-[11px] text-[#F3E5AB] tracking-widest font-mono">
+            <div className="hidden sm:flex items-center space-x-2 px-3.5 py-1.5 rounded-full glass-pill-dark text-[11px] text-[#F3E5AB] tracking-widest font-mono shadow-md">
               <Layers className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>{(scrollProgress * 100).toFixed(0)}%</span>
             </div>
@@ -317,8 +317,8 @@ export const ScrollVideoHero: React.FC<ScrollVideoHeroProps> = ({
                 transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
                 className="max-w-3xl flex flex-col items-center"
               >
-                {/* Gold Pill Badge */}
-                <div className="inline-flex items-center space-x-2 px-4 py-1.5 sm:px-5 sm:py-2 rounded-full border border-[#D4AF37]/40 bg-black/50 backdrop-blur-2xl mb-4 sm:mb-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                {/* Gold Glass Pill Badge */}
+                <div className="inline-flex items-center space-x-2 px-4 py-1.5 sm:px-5 sm:py-2 rounded-full glass-pill-dark mb-4 sm:mb-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-[#D4AF37]/45">
                   <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
                   <span className="text-[10px] sm:text-[11px] tracking-[0.35em] text-[#F3E5AB] font-bold uppercase">
                     {activeScene.badge}
@@ -342,7 +342,7 @@ export const ScrollVideoHero: React.FC<ScrollVideoHeroProps> = ({
                   <button
                     onClick={onExploreClick}
                     data-cursor="DISCOVER"
-                    className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] text-white font-bold text-xs tracking-[0.25em] uppercase rounded-full shadow-[0_10px_35px_rgba(184,134,11,0.4)] hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2.5 group"
+                    className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] text-white font-bold text-xs tracking-[0.25em] uppercase rounded-full shadow-[0_10px_35px_rgba(184,134,11,0.4)] hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2.5 group border border-[#D4AF37]/50"
                   >
                     <span>EXPLORE DESTINATIONS</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -351,7 +351,7 @@ export const ScrollVideoHero: React.FC<ScrollVideoHeroProps> = ({
                   <button
                     onClick={() => onOpenEnquiry('General Enquiry')}
                     data-cursor="PLAN"
-                    className="w-full sm:w-auto px-7 py-3.5 border border-[#D4AF37]/50 bg-black/40 hover:bg-[#D4AF37] hover:text-black text-[#F3E5AB] font-semibold text-xs tracking-[0.25em] uppercase rounded-full backdrop-blur-xl transition-all duration-300 shadow-md"
+                    className="w-full sm:w-auto px-7 py-3.5 glass-pill-dark hover:bg-[#D4AF37] hover:text-black text-[#F3E5AB] font-semibold text-xs tracking-[0.25em] uppercase rounded-full transition-all duration-300 shadow-md hover:scale-105"
                   >
                     PLAN YOUR VISIT
                   </button>
@@ -365,7 +365,7 @@ export const ScrollVideoHero: React.FC<ScrollVideoHeroProps> = ({
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -30, scale: 0.97 }}
                 transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-                className="w-full max-w-4xl rounded-2xl sm:rounded-3xl border border-[#D4AF37]/40 bg-black/60 backdrop-blur-2xl p-5 sm:p-8 md:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.7)] text-left relative overflow-hidden transition-all duration-500"
+                className="w-full max-w-4xl rounded-2xl sm:rounded-3xl glass-dark border border-[#D4AF37]/45 p-5 sm:p-8 md:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.7)] text-left relative overflow-hidden transition-all duration-500"
               >
                 {/* Background Ambient Warm Glow */}
                 <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#D4AF37]/20 rounded-full blur-[90px] pointer-events-none" />
@@ -479,8 +479,8 @@ export const ScrollVideoHero: React.FC<ScrollVideoHeroProps> = ({
                 onClick={() => jumpToScene(idx)}
                 className={`flex items-center space-x-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full border transition-all duration-300 text-[9px] sm:text-[10px] tracking-wider uppercase font-semibold whitespace-nowrap ${
                   currentScene === idx
-                    ? 'border-[#D4AF37] bg-[#D4AF37]/30 text-[#F3E5AB] backdrop-blur-md shadow-md scale-105'
-                    : 'border-white/10 bg-black/40 text-white/60 hover:text-white hover:border-white/30'
+                    ? 'border-[#D4AF37] bg-[#D4AF37]/30 text-[#F3E5AB] backdrop-blur-xl shadow-[0_4px_20px_rgba(212,175,55,0.35)] scale-105'
+                    : 'glass-pill-dark text-white/70 hover:text-white hover:border-[#D4AF37]/50'
                 }`}
               >
                 <span

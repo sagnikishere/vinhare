@@ -1,4 +1,3 @@
-'use me';
 'use client';
 
 import React, { useState } from 'react';
@@ -116,25 +115,25 @@ const Destination3DCard: React.FC<Card3DProps> = ({ property, index, onSelect })
         onMouseLeave={handleMouseLeave}
         onClick={onSelect}
         data-cursor="EXPLORE"
-        className="group relative rounded-2xl overflow-hidden glass-panel-gold border-2 border-[#D4AF37]/35 p-4 transition-all duration-300 cursor-pointer shadow-[0_15px_40px_rgba(184,134,11,0.12)]"
+        className="group relative rounded-3xl overflow-hidden glass-panel-gold border-2 border-[#D4AF37]/45 p-3.5 transition-all duration-300 cursor-pointer shadow-[0_20px_50px_rgba(184,134,11,0.15)] hover:border-[#D4AF37]/80 hover:shadow-[0_25px_60px_rgba(184,134,11,0.25)]"
         style={{
           transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
           transformStyle: 'preserve-3d',
         }}
       >
-        {/* Cursor Light Reflection Overlay */}
+        {/* Cursor Specular Glass Light Reflection Overlay */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 rounded-2xl"
+          className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 rounded-3xl"
           style={{
-            background: `radial-gradient(circle at ${lightX}% ${lightY}%, rgba(212, 175, 55, 0.3) 0%, transparent 60%)`,
+            background: `radial-gradient(circle at ${lightX}% ${lightY}%, rgba(255, 255, 255, 0.4) 0%, rgba(212, 175, 55, 0.2) 40%, transparent 70%)`,
           }}
         />
 
         {/* 3D Parallax Image Container */}
         <div
-          className="relative aspect-[4/5] rounded-xl overflow-hidden transition-transform duration-500 ease-out"
+          className="relative aspect-[4/5] rounded-2xl overflow-hidden transition-transform duration-500 ease-out"
           style={{
-            transform: isHovered ? 'translateZ(30px) scale(1.03)' : 'translateZ(0px) scale(1)',
+            transform: isHovered ? 'translateZ(30px) scale(1.02)' : 'translateZ(0px) scale(1)',
           }}
         >
           <img
@@ -144,16 +143,16 @@ const Destination3DCard: React.FC<Card3DProps> = ({ property, index, onSelect })
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A1814] via-[#1A1814]/30 to-transparent opacity-85" />
 
-          {/* Type Badge */}
+          {/* Type Badge in Glass Pill */}
           <div className="absolute top-4 left-4 z-20">
-            <span className="px-3 py-1 rounded-full text-[10px] tracking-[0.2em] font-bold text-[#F3E5AB] bg-[#1A1814]/80 backdrop-blur-md border border-[#D4AF37]/40 uppercase">
+            <span className="glass-pill-dark px-3.5 py-1.5 rounded-full text-[10px] tracking-[0.2em] font-bold text-[#F3E5AB] uppercase border border-[#D4AF37]/40 shadow-md">
               {property.type}
             </span>
           </div>
 
-          {/* Action Arrow Icon */}
+          {/* Action Arrow Icon in Glass Ring */}
           <div
-            className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-[#1A1814]/80 border border-[#D4AF37]/50 flex items-center justify-center text-[#F3E5AB] group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-300"
+            className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full glass-pill-dark border border-[#D4AF37]/50 flex items-center justify-center text-[#F3E5AB] group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-300 shadow-md"
             style={{
               transform: isHovered ? 'translateZ(40px)' : 'translateZ(0)',
             }}
@@ -161,14 +160,14 @@ const Destination3DCard: React.FC<Card3DProps> = ({ property, index, onSelect })
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </div>
 
-          {/* Card Content Overlay */}
+          {/* Card Content Overlay in Glass Panel */}
           <div
-            className="absolute bottom-0 left-0 right-0 p-6 z-20 flex flex-col space-y-3 transition-transform duration-300"
+            className="absolute bottom-3 left-3 right-3 p-5 z-20 flex flex-col space-y-2.5 rounded-xl glass-dark border border-white/15 backdrop-blur-xl transition-transform duration-300 shadow-xl"
             style={{
               transform: isHovered ? 'translateZ(35px)' : 'translateZ(0)',
             }}
           >
-            <h3 className="font-serif-luxury text-3xl font-light text-white group-hover:text-[#F3E5AB] transition-colors">
+            <h3 className="font-serif-luxury text-2xl sm:text-3xl font-light text-white group-hover:text-[#F3E5AB] transition-colors">
               {property.name}
             </h3>
 
@@ -176,13 +175,13 @@ const Destination3DCard: React.FC<Card3DProps> = ({ property, index, onSelect })
               {property.description}
             </p>
 
-            <div className="flex items-center justify-between pt-3 border-t border-[#D4AF37]/30 text-[11px] text-[#F3E5AB]">
+            <div className="flex items-center justify-between pt-2.5 border-t border-white/10 text-[11px] text-[#F3E5AB]">
               <span className="flex items-center space-x-1">
-                <MapPin className="w-3.5 h-3.5" />
+                <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
                 <span>{property.location}</span>
               </span>
-              <span className="tracking-widest uppercase font-bold text-[#F3E5AB] group-hover:underline">
-                EXPLORE DESTINATION →
+              <span className="tracking-widest uppercase font-bold text-[#D4AF37] group-hover:underline">
+                EXPLORE →
               </span>
             </div>
           </div>

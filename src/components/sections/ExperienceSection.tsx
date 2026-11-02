@@ -1,4 +1,3 @@
-'use me';
 'use client';
 
 import React, { useState } from 'react';
@@ -41,8 +40,8 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onOpenEnqu
 
         {/* Interactive Experience Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left Vertical Storytelling Selector */}
-          <div className="lg:col-span-5 flex flex-col space-y-4">
+          {/* Left Vertical Storytelling Selector in Glass Cards */}
+          <div className="lg:col-span-5 flex flex-col space-y-3.5">
             {EXPERIENCES.map((exp, idx) => {
               const isActive = idx === activeIdx;
               return (
@@ -50,10 +49,10 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onOpenEnqu
                   key={exp.id}
                   onClick={() => setActiveIdx(idx)}
                   data-cursor="SELECT"
-                  className={`p-6 rounded-2xl transition-all duration-300 cursor-pointer border-2 ${
+                  className={`p-5 rounded-2xl transition-all duration-300 cursor-pointer border ${
                     isActive
-                      ? 'bg-white border-[#D4AF37] shadow-[0_10px_30px_rgba(184,134,11,0.15)]'
-                      : 'bg-[#FAF7F2] border-[#D4AF37]/20 hover:border-[#D4AF37]/50 hover:bg-white'
+                      ? 'glass-panel-gold border-[#D4AF37] shadow-[0_12px_35px_rgba(184,134,11,0.18)] scale-[1.02]'
+                      : 'glass-panel border-[#D4AF37]/25 hover:border-[#D4AF37]/50 hover:bg-white/90'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -92,21 +91,22 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onOpenEnqu
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative aspect-[4/3] rounded-3xl overflow-hidden glass-panel-gold border-2 border-[#D4AF37]/40 shadow-[0_20px_50px_rgba(184,134,11,0.15)]"
+                className="relative aspect-[4/3] rounded-3xl overflow-hidden glass-panel-gold border-2 border-[#D4AF37]/45 shadow-[0_25px_60px_rgba(184,134,11,0.2)]"
               >
                 <img
                   src={activeExp.image}
                   alt={activeExp.title}
                   className="w-full h-full object-cover transition-transform duration-1000 scale-105 hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1814] via-[#1A1814]/40 to-transparent opacity-85" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1814] via-[#1A1814]/30 to-transparent opacity-85" />
 
-                <div className="absolute bottom-8 left-8 right-8 flex flex-col space-y-4">
-                  <span className="text-xs tracking-[0.3em] text-[#F3E5AB] uppercase font-bold">
+                {/* Floating Glass Information Tray */}
+                <div className="absolute bottom-6 left-6 right-6 p-6 sm:p-7 rounded-2xl glass-dark border border-white/15 backdrop-blur-xl flex flex-col space-y-3.5 shadow-2xl">
+                  <span className="text-[10px] sm:text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-bold">
                     {activeExp.title} AT VINHARE
                   </span>
 
-                  <h3 className="font-serif-luxury text-3xl sm:text-5xl font-light text-white">
+                  <h3 className="font-serif-luxury text-2xl sm:text-4xl font-light text-white leading-tight">
                     "{activeExp.subtitle}"
                   </h3>
 
@@ -117,7 +117,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onOpenEnqu
                   <div className="pt-2">
                     <button
                       onClick={onOpenEnquiry}
-                      className="px-6 py-3 rounded-full bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white text-xs tracking-[0.2em] font-bold uppercase flex items-center space-x-2 hover:shadow-[0_10px_25px_rgba(184,134,11,0.3)] transition-all"
+                      className="px-6 py-3 rounded-full bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white text-xs tracking-[0.2em] font-bold uppercase flex items-center space-x-2 hover:shadow-[0_10px_25px_rgba(184,134,11,0.35)] transition-all border border-[#D4AF37]/50"
                     >
                       <span>BOOK THIS EXPERIENCE</span>
                       <ArrowRight className="w-4 h-4" />

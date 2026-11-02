@@ -1,4 +1,3 @@
-'use me';
 'use client';
 
 import React, { useState } from 'react';
@@ -19,6 +18,7 @@ import { NetworkMapSection } from '../components/sections/NetworkMapSection';
 import { EnquiryModal } from '../components/modals/EnquiryModal';
 import { PropertyDetailModal } from '../components/modals/PropertyDetailModal';
 import { Footer } from '../components/ui/Footer';
+import { BackToTop } from '../components/ui/BackToTop';
 import { PropertyItem } from '../types';
 
 export default function Home() {
@@ -44,8 +44,12 @@ export default function Home() {
   };
 
   const handleExploreClick = () => {
-    const destEl = document.querySelector('#destinations');
-    if (destEl) destEl.scrollIntoView({ behavior: 'smooth' });
+    if (typeof window !== 'undefined' && (window as unknown as { __lenis?: { scrollTo: (target: string, opts: unknown) => void } }).__lenis) {
+      (window as unknown as { __lenis?: { scrollTo: (target: string, opts: unknown) => void } }).__lenis?.scrollTo('#destinations', { offset: -70, duration: 1.4 });
+    } else {
+      const destEl = document.querySelector('#destinations');
+      if (destEl) destEl.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -114,6 +118,9 @@ export default function Home() {
       <Footer
         onOpenEnquiry={handleOpenEnquiry}
       />
+
+      {/* Floating Smooth Glide Back To Top */}
+      <BackToTop />
 
       {/* Interactive 5-Step Enquiry Modal */}
       <EnquiryModal

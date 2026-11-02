@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, ArrowUpRight } from 'lucide-react';
 import { BRAND_INFO } from '../../data/vinhareData';
+import { useSmoothScroll } from '../providers/SmoothScrollProvider';
 
 interface NavbarProps {
   onOpenEnquiry: (preselectedOption?: string) => void;
@@ -13,6 +14,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry, onSelectProperty }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollTo } = useSmoothScroll();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,7 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry, onSelectProperty 
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -40,10 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry, onSelectProperty 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    const targetElement = document.querySelector(href);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollTo(href, { offset: -70, duration: 1.4 });
   };
 
   return (
@@ -51,14 +50,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry, onSelectProperty 
       <header
         className={`fixed top-0 left-0 right-0 z-[900] transition-all duration-500 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-xl border-b border-[#D4AF37]/30 py-4 shadow-sm'
-            : 'bg-gradient-to-b from-white/95 via-white/40 to-transparent py-5 md:py-7'
+            ? 'bg-white/80 backdrop-blur-2xl border-b border-[#D4AF37]/35 py-3.5 shadow-[0_12px_36px_rgba(184,134,11,0.08)]'
+            : 'bg-gradient-to-b from-white/90 via-white/40 to-transparent backdrop-blur-[6px] py-5 md:py-7'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
           <a
             href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo(0, { duration: 1.4 });
+            }}
             className="group flex flex-col items-start focus:outline-none"
             data-cursor="HOME"
           >
@@ -74,64 +77,64 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry, onSelectProperty 
             </span>
           </a>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          {/* Desktop Navigation Links in Floating Glass Dock */}
+          <nav className="hidden lg:flex items-center space-x-1 px-3 py-1.5 rounded-full glass-panel border border-[#D4AF37]/35 shadow-[0_4px_20px_rgba(184,134,11,0.06)]">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="relative text-xs tracking-[0.2em] uppercase text-[#1A1814] hover:text-[#B8860B] transition-colors py-1 group font-semibold"
+                className="relative text-[11px] tracking-[0.2em] uppercase text-[#1A1814] hover:text-[#B8860B] hover:bg-white/80 rounded-full px-3.5 py-1.5 transition-all font-semibold"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </nav>
 
           {/* Right Action Controls */}
-          <div className="hidden lg:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-4">
             <a
               href={`tel:${BRAND_INFO.phone}`}
-              className="flex items-center space-x-2 text-xs text-[#B8860B] hover:text-[#1A1814] font-semibold transition-colors tracking-widest"
+              className="glass-pill flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs text-[#B8860B] hover:text-[#1A1814] hover:border-[#D4AF37] font-semibold transition-all tracking-wider"
               title="Call Vinhare Concierge"
             >
-              <Phone className="w-3.5 h-3.5" />
+              <Phone className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>{BRAND_INFO.phone}</span>
             </a>
 
             <button
               onClick={() => onOpenEnquiry()}
               data-cursor="BOOK"
-              className="relative group px-6 py-2.5 overflow-hidden rounded-full border border-[#D4AF37] bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] hover:shadow-[0_5px_20px_rgba(184,134,11,0.3)] transition-all duration-300 shadow-sm"
+              className="relative group px-6 py-2.5 overflow-hidden rounded-full border border-[#D4AF37]/80 bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] text-white hover:shadow-[0_8px_25px_rgba(184,134,11,0.35)] transition-all duration-300 shadow-sm"
             >
               <span className="relative z-10 text-xs tracking-[0.25em] font-semibold text-white uppercase flex items-center space-x-1">
                 <span>ENQUIRE</span>
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </span>
+              <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </button>
           </div>
 
           {/* Mobile Menu Toggle Button */}
-          <div className="flex lg:hidden items-center space-x-4">
+          <div className="flex lg:hidden items-center space-x-3">
             <button
               onClick={() => onOpenEnquiry()}
-              className="px-4 py-2 text-[10px] tracking-widest font-semibold text-white bg-[#D4AF37] rounded-full uppercase shadow-sm"
+              className="px-4 py-1.5 text-[10px] tracking-widest font-semibold text-white bg-gradient-to-r from-[#B8860B] to-[#D4AF37] rounded-full uppercase shadow-sm border border-[#D4AF37]/60"
             >
               ENQUIRE
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-[#B8860B] hover:text-[#1A1814] focus:outline-none"
+              className="p-2 rounded-full glass-panel border border-[#D4AF37]/40 text-[#B8860B] hover:text-[#1A1814] focus:outline-none"
               aria-label="Toggle Navigation Menu"
             >
-              {isMobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Animated Fullscreen Overlay Menu */}
+      {/* Mobile Animated Fullscreen Overlay Menu - Glassmorphic Sheet */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -139,7 +142,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry, onSelectProperty 
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-[899] bg-[#FDFBF7] flex flex-col justify-between px-8 py-24 lg:hidden border-b border-[#D4AF37]/30"
+            className="fixed inset-0 z-[899] bg-[#FDFBF7]/90 backdrop-blur-2xl flex flex-col justify-between px-8 py-24 lg:hidden border-b border-[#D4AF37]/40"
           >
             {/* Background Glow */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.15)_0%,transparent_60%)] pointer-events-none" />
