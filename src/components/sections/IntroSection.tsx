@@ -1,13 +1,47 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Sparkles, ShieldCheck, HeartHandshake, Compass } from 'lucide-react';
 import { BRAND_INFO } from '../../data/vinhareData';
+
+const HOTEL_SLIDES = [
+  {
+    id: 'shiv-garden',
+    name: 'Shiv Garden Resort',
+    subtitle: 'Lush Manicured Lawns & Regal Celebrations',
+    image: '/images/shiv-garden/IMG_2974.jpg',
+    tag: 'GARDEN RESORT • STAY • EVENTS',
+  },
+  {
+    id: 'jp-resort',
+    name: 'J.P. Resort',
+    subtitle: 'Modern Luxury Suites & Private Courtyards',
+    image: '/images/jp_resort.jpg',
+    tag: 'CONTEMPORARY RESORT & SUITES',
+  },
+  {
+    id: 'resort-raj',
+    name: 'Resort Raj',
+    subtitle: 'Palatial Heritage Façade & Poolside Stays',
+    image: '/images/raj_resort.webp',
+    tag: 'HERITAGE PALACE & POOL VILLA',
+  },
+];
 
 export const IntroSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+
+  // Auto changing hotel slides
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HOTEL_SLIDES.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   // Card 3D tilt state
   const [rotateX, setRotateX] = useState(0);
@@ -146,25 +180,75 @@ export const IntroSection: React.FC = () => {
                 transformStyle: 'preserve-3d',
               }}
             >
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                <img
-                  src="/images/hero_resort.jpg"
-                  alt="Vinhare Luxury Experience"
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1814]/90 via-transparent to-transparent opacity-80" />
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#1A1814]">
+                {/* Auto Crossfade Hotel Images */}
+                <AnimatePresence mode="sync">
+                  <motion.img
+                    key={HOTEL_SLIDES[currentSlide].id}
+                    src={HOTEL_SLIDES[currentSlide].image}
+                    alt={HOTEL_SLIDES[currentSlide].name}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                </AnimatePresence>
 
-                {/* Card Badge */}
-                <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                {/* Dark Vignette & Gradient Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1814]/95 via-[#1A1814]/30 to-transparent pointer-events-none" />
+
+                {/* Top Indicators: 3 Interactive Pills */}
+                <div className="absolute top-4 right-4 flex items-center space-x-1.5 z-20">
+                  {HOTEL_SLIDES.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentSlide(idx);
+                      }}
+                      className={`h-1.5 rounded-full transition-all duration-500 ${
+                        currentSlide === idx
+                          ? 'w-7 bg-[#F3E5AB] shadow-md shadow-[#D4AF37]/50'
+                          : 'w-2 bg-white/40 hover:bg-white/70'
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Top Left Property Badge */}
+                <div className="absolute top-4 left-4 z-20">
+                  <span className="glass-pill-dark px-3 py-1 rounded-full text-[9px] tracking-[0.25em] font-bold text-[#F3E5AB] uppercase border border-[#D4AF37]/40 shadow-sm backdrop-blur-md">
+                    {HOTEL_SLIDES[currentSlide].tag}
+                  </span>
+                </div>
+
+                {/* Bottom Card Badge with Dynamic Hotel Information */}
+                <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end z-20 pointer-events-none">
                   <div>
-                    <span className="text-[10px] tracking-[0.3em] text-[#F3E5AB] uppercase font-bold">
-                      THE VINHARE STANDARD
+                    <span className="text-[10px] tracking-[0.3em] text-[#F3E5AB] uppercase font-bold flex items-center space-x-2">
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#B8860B] animate-pulse" />
+                      <span>THE VINHARE STANDARD • {currentSlide + 1} OF 3</span>
                     </span>
-                    <h3 className="font-serif-luxury text-2xl text-white mt-0.5">
-                      Bihar's Flagship Hospitality Group
-                    </h3>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={HOTEL_SLIDES[currentSlide].id}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        <h3 className="font-serif-luxury text-2xl md:text-3xl text-white mt-1">
+                          {HOTEL_SLIDES[currentSlide].name}
+                        </h3>
+                        <p className="text-xs font-serif italic text-[#E5D3B3] mt-0.5">
+                          {HOTEL_SLIDES[currentSlide].subtitle}
+                        </p>
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
-                  <div className="px-3 py-1 rounded border border-[#D4AF37]/60 bg-[#1A1814]/80 text-[10px] tracking-widest text-[#F3E5AB]">
+                  <div className="px-3 py-1.5 rounded-lg border border-[#D4AF37]/60 bg-[#1A1814]/85 backdrop-blur-md text-[10px] tracking-widest text-[#F3E5AB] font-mono shadow-md">
                     EST. HOSPITALITY
                   </div>
                 </div>

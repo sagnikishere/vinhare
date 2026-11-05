@@ -103,12 +103,10 @@ export default function DestinationsPage() {
                     <span className="glass-pill-dark px-3.5 py-1.5 rounded-full text-[10px] tracking-wider font-bold text-[#F3E5AB] uppercase border border-[#D4AF37]/40">
                       {prop.type}
                     </span>
-                    {prop.id === 'shiv-garden-resort' && (
-                      <span className="bg-[#B8860B] text-white px-3.5 py-1.5 rounded-full text-[10px] tracking-wider font-bold uppercase shadow-md flex items-center space-x-1">
-                        <Camera className="w-3.5 h-3.5" />
-                        <span>18 REAL PHOTOS</span>
-                      </span>
-                    )}
+                    <span className="bg-[#B8860B] text-white px-3.5 py-1.5 rounded-full text-[10px] tracking-wider font-bold uppercase shadow-md flex items-center space-x-1">
+                      <Camera className="w-3.5 h-3.5" />
+                      <span>{prop.gallery.length} REAL PHOTOS</span>
+                    </span>
                   </div>
 
                   {/* Bottom Image Overlay */}

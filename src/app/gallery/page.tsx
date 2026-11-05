@@ -637,7 +637,7 @@ export default function GalleryPage() {
               </h1>
 
               <p className="text-sm sm:text-base font-light text-[#52483B] mt-3 leading-relaxed">
-                Immerse yourself in authentic views across our landmark destinations. Featuring real photo archives from <strong className="font-semibold text-[#B8860B]">Shiv Garden Resort</strong>, alongside J.P. Resort, Resort Raj, and Mithila Marriage Services.
+                Immerse yourself in authentic views across our landmark destinations. Featuring complete real photo archives from <strong className="font-semibold text-[#B8860B]">Shiv Garden Resort</strong>, <strong className="font-semibold text-[#B8860B]">J.P. Resort</strong>, and <strong className="font-semibold text-[#B8860B]">Resort Raj</strong>.
               </p>
             </div>
 

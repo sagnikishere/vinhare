@@ -56,19 +56,29 @@ export default function WeddingsPage() {
       tag: 'Shiv Garden Lawns',
     },
     {
-      title: 'Shiv Garden Resort - Evening Event Pavilion',
-      url: '/images/shiv-garden/IMG_3002.jpg',
-      tag: 'Banqueting Hall',
+      title: 'J.P. Resort - Grand Wedding Mandap & Floral Stage',
+      url: '/images/jp-resort/IMG_3992.jpg',
+      tag: 'J.P. Celebration Pavilion',
     },
     {
-      title: 'Royal Mandap Styling & Floral Canopy',
-      url: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop',
-      tag: 'Mandap Artistry',
+      title: 'Resort Raj - Rock Garden & Royal Celebration Lawns',
+      url: '/images/raj-resort/DSC_1844.webp',
+      tag: 'Resort Raj Grounds',
     },
     {
       title: 'Shiv Garden Resort - Golden Night Illumination',
       url: '/images/shiv_garden_night.jpeg',
       tag: 'Night Staging',
+    },
+    {
+      title: 'J.P. Resort - Ceremonial Stage & Traditional Mural',
+      url: '/images/jp-resort/IMG_3996.jpg',
+      tag: 'J.P. Royal Mandap',
+    },
+    {
+      title: 'Resort Raj - Palace Promenade & Fine Art Corridor',
+      url: '/images/raj-resort/DSC_1760.webp',
+      tag: 'Resort Raj Banquets',
     },
   ];
 
