@@ -25,7 +25,7 @@ interface GalleryItemDef {
   id: string;
   title: string;
   property: string;
-  category: 'ALL' | 'SHIV GARDEN' | 'RESORTS' | 'WEDDINGS' | 'EVENTS' | 'EXPERIENCES';
+  category: 'ALL' | 'SHIV GARDEN' | 'JP RESORT' | 'RAJ RESORT' | 'RESORTS' | 'WEDDINGS' | 'EVENTS' | 'EXPERIENCES';
   image: string;
   aspect: 'wide' | 'tall' | 'square';
   caption: string;
@@ -196,33 +196,296 @@ const ALL_GALLERY_PHOTOS: GalleryItemDef[] = [
     caption: 'Classical stone columns and regal archway details highlighting royal craftsmanship.',
   },
 
-  // Other Vinhare Resorts, Weddings & Experiences
+  // 5 Authentic J.P. Resort Photos from media\jp resort
   {
     id: 'jp-1',
-    title: 'J.P. Resort - Reflecting Basin & Villa Suite',
+    title: 'J.P. Resort - Grand Wedding Mandap & Floral Stage',
     property: 'J.P. Resort',
-    category: 'RESORTS',
+    category: 'JP RESORT',
+    image: '/images/jp-resort/IMG_3992.jpg',
+    aspect: 'tall',
+    caption: 'Regal wedding stage adorned with cascading floral arches, tiered purple dais, and golden ambient illumination.',
+  },
+  {
+    id: 'jp-2',
+    title: 'J.P. Resort - Ceremonial Floral Arches & Fairy Lighting',
+    property: 'J.P. Resort',
+    category: 'JP RESORT',
+    image: '/images/jp-resort/IMG_3993.jpg',
+    aspect: 'tall',
+    caption: 'Magnificent festive backdrop with multi-tier flower arrangements and sparkling twilight fairy light curtains.',
+  },
+  {
+    id: 'jp-3',
+    title: 'J.P. Resort - Floral Canopy & Bridal Dais Detail',
+    property: 'J.P. Resort',
+    category: 'JP RESORT',
+    image: '/images/jp-resort/IMG_3995.jpg',
+    aspect: 'tall',
+    caption: 'Close-up perspective of the exquisite bridal seating platform and sculpted floral chandeliers.',
+  },
+  {
+    id: 'jp-4',
+    title: 'J.P. Resort - Traditional Wedding Mural & Stage Pavilion',
+    property: 'J.P. Resort',
+    category: 'JP RESORT',
+    image: '/images/jp-resort/IMG_3996.jpg',
+    aspect: 'tall',
+    caption: 'Traditional cultural wedding painting featuring royal bride and groom alongside majestic peacocks.',
+  },
+  {
+    id: 'jp-5',
+    title: 'J.P. Resort - Grand Banqueting Staging Perspective',
+    property: 'J.P. Resort',
+    category: 'JP RESORT',
+    image: '/images/jp-resort/IMG_3997.jpg',
+    aspect: 'tall',
+    caption: 'Panoramic elevated angle showcasing the expansive ceremonial stage and celebratory carpet.',
+  },
+  {
+    id: 'jp-suite',
+    title: 'J.P. Resort - Modern Villa Suite & Courtyard',
+    property: 'J.P. Resort',
+    category: 'JP RESORT',
     image: '/images/jp_resort.jpg',
     aspect: 'tall',
-    caption: 'Contemporary air-conditioned suites opening to tranquil reflecting waters.',
+    caption: 'Contemporary luxury suite architecture opening towards serene garden courtyards.',
   },
+
+  // 26 Authentic Resort Raj Photos from media\raj reosrt
   {
     id: 'raj-1',
-    title: 'Resort Raj - Palatial Heritage Grounds',
+    title: 'Resort Raj - Rock Garden & Rustic Waterfall Bridge',
     property: 'Resort Raj',
-    category: 'RESORTS',
-    image: '/images/raj_resort.webp',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1835.webp',
     aspect: 'wide',
-    caption: 'Classical palace facade and soaring columns crafted for grand events.',
+    caption: 'Signature landscaped rock waterfall with wooden arched bridge, ornamental swans, and resort crest.',
   },
   {
-    id: 'wed-1',
-    title: 'Mithila Marriage Services - Royal Mandap Canopy',
-    property: 'Mithila Marriage Services',
-    category: 'WEDDINGS',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop',
-    aspect: 'square',
-    caption: 'Bespoke royal mandap styling with fresh floral garlands and golden detailing.',
+    id: 'raj-2',
+    title: 'Resort Raj - Palatial Swimming Pool & Sun Courtyard',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1821.webp',
+    aspect: 'wide',
+    caption: 'Vibrant swimming pool framed by classical palace columns, tall arched windows, and poolside loungers.',
+  },
+  {
+    id: 'raj-3',
+    title: 'Resort Raj - Luxury Master Bedchamber & Geometric Suite',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1720.webp',
+    aspect: 'wide',
+    caption: 'Opulent king-sized master suite with modern triangle upholstered headboard, golden lamps, and mirrors.',
+  },
+  {
+    id: 'raj-4',
+    title: 'Resort Raj - Palace Promenade & Fine Art Corridor',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1760.webp',
+    aspect: 'tall',
+    caption: 'Grand hallway with black marble trim, polished marble flooring, and framed classical paintings.',
+  },
+  {
+    id: 'raj-5',
+    title: 'Resort Raj - Arched Bistro Cafe & Dining Lounge',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1800.webp',
+    aspect: 'wide',
+    caption: 'Stylish cafe lounge with teal velvet dining chairs, marble-topped tables, and arched windows.',
+  },
+  {
+    id: 'raj-6',
+    title: 'Resort Raj - Stepping Stone Pathway & Swan Basin',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1831.webp',
+    aspect: 'tall',
+    caption: 'Curved stone garden footpath leading across serene waterways and lush landscaped greenery.',
+  },
+  {
+    id: 'raj-7',
+    title: 'Resort Raj - Luxury Poolside Deck & Palace Wing',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1825.webp',
+    aspect: 'wide',
+    caption: 'Expansive pool deck with kid wading basin, surrounding sun loungers, and decorative lighting.',
+  },
+  {
+    id: 'raj-8',
+    title: 'Resort Raj - VIP Executive Suite Bedchamber',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1723.webp',
+    aspect: 'wide',
+    caption: 'Spacious guest accommodation featuring warm ambient backlighting and plush bedding.',
+  },
+  {
+    id: 'raj-9',
+    title: 'Resort Raj - Heritage Palace Façade & Pillars',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj_resort.webp',
+    aspect: 'wide',
+    caption: 'Regal Indian architecture with grand white portico, majestic archways, and palatial entrance.',
+  },
+  {
+    id: 'raj-10',
+    title: 'Resort Raj - Tropical Garden Lawns & Palace Grounds',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1844.webp',
+    aspect: 'wide',
+    caption: 'Manicured green lawn surrounded by mature palms, natural stone feature walls, and event staging.',
+  },
+  {
+    id: 'raj-11',
+    title: 'Resort Raj - VIP Lounge & Sculpture Relief Art',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1770.webp',
+    aspect: 'tall',
+    caption: 'Intimate reception lounge with classical equestrian sculpture, chandelier, and plush velvet seating.',
+  },
+  {
+    id: 'raj-12',
+    title: 'Resort Raj - Cinema Art Staircase & Poster Gallery',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1788.webp',
+    aspect: 'tall',
+    caption: 'Architectural black granite staircase lined with vintage Indian cinema artwork leading to suites.',
+  },
+  {
+    id: 'raj-13',
+    title: 'Resort Raj - Luxury Suite Vanity & Accent Lighting',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1732.webp',
+    aspect: 'tall',
+    caption: 'Designer bedside lighting, illuminated vanity mirrors, and refined wood wall paneling.',
+  },
+  {
+    id: 'raj-14',
+    title: 'Resort Raj - Executive Dressing Area & Suite Comfort',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1726.webp',
+    aspect: 'wide',
+    caption: 'Contemporary bedroom setup complete with bedside controls, ambient sconces, and polished floors.',
+  },
+  {
+    id: 'raj-15',
+    title: 'Resort Raj - Entertainment Console & In-Room Bar',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1750.webp',
+    aspect: 'tall',
+    caption: 'In-suite smart entertainment display, minibar refrigerator, and bespoke wooden desk cabinetry.',
+  },
+  {
+    id: 'raj-16',
+    title: 'Resort Raj - Fine Dining Hall & Event Seating',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1805.webp',
+    aspect: 'wide',
+    caption: 'Warmly lit dining hall designed for family feasts, celebrations, and corporate hospitality.',
+  },
+  {
+    id: 'raj-17',
+    title: 'Resort Raj - Private Dining Alcove & Accent Walls',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1810.webp',
+    aspect: 'wide',
+    caption: 'Cozy seating booths with modern wooden privacy screens and inspirational art displays.',
+  },
+  {
+    id: 'raj-18',
+    title: 'Resort Raj - Gourmet Hospitality Counter',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1815.webp',
+    aspect: 'wide',
+    caption: 'Dedicated restaurant service station and beverage counter serving authentic regional specialties.',
+  },
+  {
+    id: 'raj-19',
+    title: 'Resort Raj - Tropical Rockery & Water Fountain',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1838.webp',
+    aspect: 'wide',
+    caption: 'Ornate natural stone rockery with flowing waters, decorative urns, and flowering plants.',
+  },
+  {
+    id: 'raj-20',
+    title: 'Resort Raj - Manicured Festival Grounds',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1840.webp',
+    aspect: 'wide',
+    caption: 'Expansive open-air event grounds suited for majestic wedding processions and receptions.',
+  },
+  {
+    id: 'raj-21',
+    title: 'Resort Raj - Palatial Grounds Panorama',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1847.webp',
+    aspect: 'wide',
+    caption: 'Wide angle view of the estate gardens, event staging infrastructure, and boundary greenery.',
+  },
+  {
+    id: 'raj-22',
+    title: 'Resort Raj - Grand Entrance Portico',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/hero_resort.jpg',
+    aspect: 'wide',
+    caption: 'Imposing classical palace entrance with towering colonnades and broad arrival avenue.',
+  },
+  {
+    id: 'raj-23',
+    title: 'Resort Raj - Deluxe Suite Double Bedroom',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1730.webp',
+    aspect: 'wide',
+    caption: 'Inviting double suite arrangement featuring tasteful interior decor and climate control.',
+  },
+  {
+    id: 'raj-24',
+    title: 'Resort Raj - Luxury Bedside Detail & Golden Glow',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1738.webp',
+    aspect: 'wide',
+    caption: 'Cozy night lighting casting a serene golden glow throughout the accommodation quarters.',
+  },
+  {
+    id: 'raj-25',
+    title: 'Resort Raj - Gallery Promenade Long Perspective',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1766.webp',
+    aspect: 'tall',
+    caption: 'Symmetric hallway lined with tall windows welcoming abundant natural daylight.',
+  },
+  {
+    id: 'raj-26',
+    title: 'Resort Raj - Classical Drawing Room Suite',
+    property: 'Resort Raj',
+    category: 'RAJ RESORT',
+    image: '/images/raj-resort/DSC_1775.webp',
+    aspect: 'tall',
+    caption: 'Elegant waiting foyer tailored for guest relaxation and dignitary welcoming.',
   },
   {
     id: 'sg-night',
@@ -232,33 +495,6 @@ const ALL_GALLERY_PHOTOS: GalleryItemDef[] = [
     image: '/images/shiv_garden_night.jpeg',
     aspect: 'tall',
     caption: 'Spectacular nocturnal lighting transforming the resort into a glowing wonderland.',
-  },
-  {
-    id: 'exp-1',
-    title: 'J.P. Resort - Courtyard Candlelit Dinner',
-    property: 'J.P. Resort',
-    category: 'EXPERIENCES',
-    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop',
-    aspect: 'wide',
-    caption: 'Intimate candlelit dining beneath the stars with curated regional delicacies.',
-  },
-  {
-    id: 'wed-2',
-    title: 'Mithila Marriage Services - Sacred Procession',
-    property: 'Mithila Marriage Services',
-    category: 'WEDDINGS',
-    image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1200&auto=format&fit=crop',
-    aspect: 'square',
-    caption: 'Authentic cultural ceremonies honoring timeless Bihari traditions.',
-  },
-  {
-    id: 'raj-2',
-    title: 'Resort Raj - Royal Banquet Arrival Pavilion',
-    property: 'Resort Raj',
-    category: 'RESORTS',
-    image: '/images/hero_resort.jpg',
-    aspect: 'wide',
-    caption: 'Grand arrival portico designed to accommodate dignitary processions.',
   },
 ];
 
@@ -276,24 +512,34 @@ export default function GalleryPage() {
       count: ALL_GALLERY_PHOTOS.filter((p) => p.category === 'SHIV GARDEN' || p.property === 'Shiv Garden Resort').length,
     },
     {
+      id: 'JP RESORT',
+      label: 'J.P. Resort',
+      count: ALL_GALLERY_PHOTOS.filter((p) => p.category === 'JP RESORT' || p.property === 'J.P. Resort').length,
+    },
+    {
+      id: 'RAJ RESORT',
+      label: 'Resort Raj',
+      count: ALL_GALLERY_PHOTOS.filter((p) => p.category === 'RAJ RESORT' || p.property === 'Resort Raj').length,
+    },
+    {
       id: 'RESORTS',
       label: 'Resorts & Stays',
-      count: ALL_GALLERY_PHOTOS.filter((p) => p.category === 'RESORTS' || p.category === 'SHIV GARDEN').length,
+      count: ALL_GALLERY_PHOTOS.filter((p) => p.category === 'RESORTS' || p.category === 'SHIV GARDEN' || p.category === 'JP RESORT' || p.category === 'RAJ RESORT').length,
     },
     {
       id: 'WEDDINGS',
       label: 'Royal Weddings',
-      count: ALL_GALLERY_PHOTOS.filter((p) => p.category === 'WEDDINGS').length,
+      count: ALL_GALLERY_PHOTOS.filter((p) => p.category === 'WEDDINGS' || p.title.toLowerCase().includes('wedding') || p.caption.toLowerCase().includes('wedding') || p.property === 'Mithila Marriage Services').length,
     },
     {
       id: 'EVENTS',
       label: 'Celebrations & Banquets',
-      count: ALL_GALLERY_PHOTOS.filter((p) => p.category === 'EVENTS' || p.category === 'SHIV GARDEN').length,
+      count: ALL_GALLERY_PHOTOS.filter((p) => p.category === 'EVENTS' || p.category === 'SHIV GARDEN' || p.property === 'J.P. Resort').length,
     },
     {
       id: 'EXPERIENCES',
       label: 'Dining & Leisure',
-      count: ALL_GALLERY_PHOTOS.filter((p) => p.category === 'EXPERIENCES').length,
+      count: ALL_GALLERY_PHOTOS.filter((p) => p.category === 'EXPERIENCES' || p.title.toLowerCase().includes('dining') || p.title.toLowerCase().includes('pool') || p.title.toLowerCase().includes('garden') || p.title.toLowerCase().includes('bistro')).length,
     },
   ];
 
@@ -304,9 +550,45 @@ export default function GalleryPage() {
       ? ALL_GALLERY_PHOTOS.filter(
           (p) => p.category === 'SHIV GARDEN' || p.property === 'Shiv Garden Resort'
         )
+      : activeTab === 'JP RESORT'
+      ? ALL_GALLERY_PHOTOS.filter(
+          (p) => p.category === 'JP RESORT' || p.property === 'J.P. Resort'
+        )
+      : activeTab === 'RAJ RESORT'
+      ? ALL_GALLERY_PHOTOS.filter(
+          (p) => p.category === 'RAJ RESORT' || p.property === 'Resort Raj'
+        )
       : activeTab === 'RESORTS'
       ? ALL_GALLERY_PHOTOS.filter(
-          (p) => p.category === 'RESORTS' || p.category === 'SHIV GARDEN'
+          (p) =>
+            p.category === 'RESORTS' ||
+            p.category === 'SHIV GARDEN' ||
+            p.category === 'JP RESORT' ||
+            p.category === 'RAJ RESORT'
+        )
+      : activeTab === 'WEDDINGS'
+      ? ALL_GALLERY_PHOTOS.filter(
+          (p) =>
+            p.category === 'WEDDINGS' ||
+            p.title.toLowerCase().includes('wedding') ||
+            p.caption.toLowerCase().includes('wedding') ||
+            p.property === 'Mithila Marriage Services'
+        )
+      : activeTab === 'EVENTS'
+      ? ALL_GALLERY_PHOTOS.filter(
+          (p) =>
+            p.category === 'EVENTS' ||
+            p.category === 'SHIV GARDEN' ||
+            p.property === 'J.P. Resort'
+        )
+      : activeTab === 'EXPERIENCES'
+      ? ALL_GALLERY_PHOTOS.filter(
+          (p) =>
+            p.category === 'EXPERIENCES' ||
+            p.title.toLowerCase().includes('dining') ||
+            p.title.toLowerCase().includes('pool') ||
+            p.title.toLowerCase().includes('garden') ||
+            p.title.toLowerCase().includes('bistro')
         )
       : ALL_GALLERY_PHOTOS.filter((p) => p.category === activeTab);
 
